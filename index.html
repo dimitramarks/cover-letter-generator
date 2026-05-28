@@ -2131,12 +2131,15 @@ function collectArrests() {
 //  DATE → DURATION AUTO-CALC
 // ─────────────────────────────────────────────
 ['travelDateFrom','travelDateTo'].forEach(id => {
-  document.getElementById(id).addEventListener('change', () => {
-    const a = document.getElementById('travelDateFrom').value;
-    const b = document.getElementById('travelDateTo').value;
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener('change', () => {
+    const a = document.getElementById('travelDateFrom')?.value;
+    const b = document.getElementById('travelDateTo')?.value;
     if (a && b) {
       const days = Math.round((new Date(b) - new Date(a)) / 86400000);
-      document.getElementById('travelDuration').value = days > 0 ? `${days} day${days !== 1 ? 's' : ''}` : '';
+      const dur  = document.getElementById('travelDuration');
+      if (dur) dur.value = days > 0 ? `${days} day${days !== 1 ? 's' : ''}` : '';
     }
   });
 });
@@ -3448,8 +3451,27 @@ async function handleTextUpload(input, targetTextareaId, statusId) {
 //  INIT
 // ─────────────────────────────────────────────
 window.addEventListener('DOMContentLoaded', () => {
-  initAttachments();
-  addArrest();
+  // Attachments — add defaults if list is empty
+  try {
+    if (!document.getElementById('attachmentList')?.children.length) initAttachments();
+  } catch(e) { console.error('initAttachments failed:', e); }
+
+  // Arrests — add default if none exist
+  try {
+    if (!arrests.length) addArrest();
+  } catch(e) { console.error('addArrest failed:', e); }
+
+  // Duration — calculate immediately if both dates are already set
+  try {
+    const a = document.getElementById('travelDateFrom')?.value;
+    const b = document.getElementById('travelDateTo')?.value;
+    if (a && b) {
+      const days = Math.round((new Date(b) - new Date(a)) / 86400000);
+      const dur  = document.getElementById('travelDuration');
+      if (dur) dur.value = days > 0 ? `${days} day${days !== 1 ? 's' : ''}` : '';
+    }
+  } catch(e) { console.error('duration calc failed:', e); }
+
   _refreshLetters().then(() => { updateSavedBadge(); renderCMFolderTabs(); });
 
   // Wire up drag-and-drop for all three upload areas
