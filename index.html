@@ -1,0 +1,3561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cover Letter Generator — Cohen Immigration Law</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:          #faf8f9;
+    --card:        #ffffff;
+    --text:        #1c1520;
+    --muted:       #96889e;
+    --border:      #ecdce6;
+    --input-bg:    #ffffff;
+    --accent:      #a82d5c;
+    --accent-soft: #fceef5;
+    --accent-mid:  #d07098;
+    --pink:        #c03868;
+    --gold:        #9a5c10;
+    --gold-light:  #b07020;
+    --gold-pale:   #fdf5e6;
+    --green:       #1a6840;
+    --green-pale:  #eaf4ee;
+    --red:         #b82030;
+    --red-pale:    #fcecea;
+    --shadow:      0 1px 4px rgba(0,0,0,0.06), 0 2px 10px rgba(0,0,0,0.04);
+    --shadow-md:   0 4px 20px rgba(0,0,0,0.08);
+    --radius:      8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-size: 15px;
+    min-height: 100vh;
+  }
+
+  /* Subtle dot pattern on bg */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, #e0b0c8 1px, transparent 1px);
+    background-size: 32px 32px;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .site-header, .layout { position: relative; z-index: 1; }
+
+  /* ─── HEADER ─── */
+  .site-header {
+    background: linear-gradient(135deg, #6e1a38 0%, #962448 55%, #b03060 100%);
+    padding: 0 40px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    box-shadow: 0 2px 12px rgba(110,26,56,0.28);
+    border-bottom: 1px solid rgba(220,100,140,0.25);
+  }
+  .header-logo {
+    width: 190px;
+    height: 148px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.35));
+    overflow: visible;
+  }
+  .header-title-group { display: flex; flex-direction: column; }
+  .site-header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.1px;
+  }
+  .site-header p { font-size: 14px; color: rgba(255,255,255,0.55); margin-top: 5px; font-weight: 400; letter-spacing: 0.2px; }
+  .header-sparkles { margin-left: auto; font-size: 14px; opacity: 0.4; letter-spacing: 4px; }
+
+  /* ─── LAYOUT ─── */
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 540px;
+    min-height: calc(100vh - 150px);
+  }
+
+  /* ─── FORM PANEL ─── */
+  .form-panel {
+    padding: 28px 36px;
+    overflow-y: auto;
+    border-right: 1px solid var(--border);
+  }
+
+  /* ─── CARDS ─── */
+  .section-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .section-card:hover { box-shadow: var(--shadow-md); }
+  .section-card-header {
+    background: #7a1f44;
+    border-left: 3px solid var(--accent-mid);
+    padding: 11px 18px;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.92);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .section-card-body { padding: 20px 18px; }
+
+  /* ─── FORM ELEMENTS ─── */
+  .row      { display: grid; grid-template-columns: 1fr 1fr;     gap: 16px; margin-bottom: 16px; }
+  .row.three{ grid-template-columns: 1fr 1fr 1fr; }
+  .row.full { grid-template-columns: 1fr; }
+
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    padding: 9px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(156,31,82,0.10);
+  }
+  .field input[readonly] {
+    background: #fdf0f5;
+    color: var(--muted);
+    cursor: default;
+  }
+  .field textarea { resize: vertical; min-height: 90px; }
+
+
+  /* ─── GUIDE ─── */
+  .guide-toggle {
+    font-size: 12px;
+    color: var(--accent);
+    cursor: pointer;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 6px;
+  }
+  .guide-toggle:hover { text-decoration: underline; }
+  .guide-box {
+    display: none;
+    background: linear-gradient(135deg, #fff8fb, #fdeef5);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 1.65;
+    color: #5a2840;
+  }
+  .guide-box.open { display: block; }
+  .guide-box h4 { color: var(--accent); margin-bottom: 5px; font-size: 12px; font-weight: 800; }
+  .guide-box ul  { margin-left: 16px; margin-bottom: 8px; }
+  .guide-box li  { margin-bottom: 3px; }
+
+  /* ─── OFFENCES ─── */
+  .offence-item {
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .offence-num {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+  }
+  .remove-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--red-pale);
+    border: 1px solid #f0b8b2;
+    color: var(--red);
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .remove-btn:hover { background: #fce0dc; }
+
+  /* ─── CHARGE BLOCK (nested within arrest) ─── */
+  .charge-block {
+    border-left: 3px solid var(--accent-mid);
+    padding: 10px 12px;
+    margin: 10px 0;
+    background: rgba(255,255,255,0.5);
+    border-radius: 0 6px 6px 0;
+  }
+  .charge-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .remove-charge-btn {
+    background: var(--red-pale);
+    border: 1px solid #f0b8b2;
+    color: var(--red);
+    border-radius: 5px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .remove-charge-btn:hover { background: #fce0dc; }
+  .add-charge-btn {
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-mid);
+    color: var(--accent);
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 6px;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  .add-charge-btn:hover { background: #e8c8d8; }
+
+  /* ─── PER-OFFENCE UPLOAD ─── */
+  .offence-upload-zone {
+    margin-top: 12px;
+    border: 1.5px dashed var(--accent-mid);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.6);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .offence-upload-zone:hover, .offence-upload-zone.drag-over {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+  }
+  .offence-upload-zone-icon { font-size: 22px; flex-shrink: 0; }
+  .offence-upload-zone-text { font-size: 14px; color: var(--muted); font-weight: 600; flex: 1; }
+  .offence-upload-zone-text strong { color: var(--accent); }
+  .offence-upload-status { font-size: 13px; margin-top: 6px; }
+
+  /* ─── BUTTONS ─── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border-radius: 6px;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: opacity 0.15s, transform 0.1s, box-shadow 0.15s;
+  }
+  .btn:active { transform: scale(0.98); }
+  .btn-outline {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .btn-outline:hover { background: var(--accent-soft); border-color: var(--accent-mid); }
+  .btn-gold { background: linear-gradient(135deg, #a87020, #c89030); color: #fff; box-shadow: 0 2px 6px rgba(168,112,32,0.22); }
+  .btn-gold:hover { opacity: 0.9; }
+  .btn-green { background: var(--green); color: #fff; }
+  .btn-sm { padding: 6px 14px; font-size: 12px; }
+
+  /* ─── ATTACHMENTS ─── */
+  .attachment-list { display: flex; flex-direction: column; gap: 8px; }
+  .attachment-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--input-bg);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+  }
+  .attachment-item input[type="text"] {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-size: 14px;
+    font-family: inherit;
+  }
+  .attachment-item input[type="text"]:focus { outline: none; }
+  .attachment-item button {
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    padding: 0;
+  }
+  .attachment-item button:hover { color: var(--red); }
+
+  /* ─── PDF UPLOAD ─── */
+  .upload-area {
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    cursor: pointer;
+    background: var(--input-bg);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .upload-area:hover   { border-color: var(--pink); background: #fde0ec; transform: translateY(-1px); }
+  .upload-area.drag-over { border-color: var(--pink); background: #fdd0e4; border-style: solid; transform: translateY(-1px); }
+  .upload-area input { display: none; }
+  .upload-area p { color: var(--muted); font-size: 13px; }
+
+  /* ─── TEXT FILE UPLOAD (statement/rehab) ─── */
+  .text-upload-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .text-upload-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-mid);
+    border-radius: 6px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .text-upload-btn:hover { background: #e8c8d8; border-color: var(--accent); }
+  .text-upload-btn input { display: none; }
+  .text-file-status { font-size: 13px; color: var(--muted); }
+
+  /* ─── GENERATE ─── */
+  .generate-wrap { text-align: center; padding: 20px 0 12px; }
+  .btn-generate {
+    background: linear-gradient(135deg, #7a1f44 0%, #a02858 50%, #b8386a 100%);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px 52px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: inherit;
+    box-shadow: 0 4px 16px rgba(120,24,64,0.30);
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.2s;
+  }
+  .btn-generate:hover   { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(120,24,64,0.36); }
+  .btn-generate:active  { transform: scale(0.97); }
+  .btn-generate:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+
+  /* ─── PREVIEW PANEL ─── */
+  .preview-panel {
+    background: #fdf8fa;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--border);
+  }
+  .preview-header {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 11px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    box-shadow: var(--shadow);
+  }
+  .preview-header span {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* ─── TABS ─── */
+  .preview-tabs {
+    display: flex;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .preview-tab {
+    padding: 12px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s;
+  }
+  .preview-tab { font-family: inherit; }
+  .preview-tab.active { color: var(--accent); border-bottom-color: var(--pink); }
+  .tab-pane { display: none; flex: 1; overflow-y: auto; flex-direction: column; }
+  .tab-pane.active { display: flex; }
+
+  /* ─── PREVIEW LETTER ─── */
+  .preview-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+    font-family: 'Times New Roman', serif;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .preview-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--muted);
+    text-align: center;
+    padding: 48px 32px;
+    gap: 12px;
+  }
+  .preview-placeholder .big-icon { font-size: 52px; opacity: 0.25; }
+  .live-section-placeholder {
+    background: #faf4f7;
+    border: 1.5px dashed #ddc4d0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 8px 0 14px;
+    color: #b07090;
+    font-size: 12px;
+    font-style: italic;
+    text-align: center;
+  }
+  .live-empty-cell { color: #ccc; font-style: italic; font-size: 11px; }
+
+  .letter-wrap {
+    background: #fff;
+    padding: 32px;
+    border-radius: 6px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.10);
+    border: 1px solid #ddd;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    color: #000;
+  }
+  .letter-firm-header-table {
+    width: 100%; border-collapse: collapse; margin-bottom: 10px;
+  }
+  .lfh-left {
+    font-size: 7px; color: #444; vertical-align: middle;
+    text-align: left; width: 33%; line-height: 1.7;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  .lfh-center {
+    text-align: center; vertical-align: middle; width: 34%;
+    padding: 0 8px;
+  }
+  .lfh-brand-row {
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .lfh-leaf { font-size: 20px; color: #333; line-height: 1; filter: grayscale(1) brightness(0.3); }
+  .lfh-vbar {
+    display: inline-block; width: 1px; height: 36px;
+    background: #555; flex-shrink: 0;
+  }
+  .lfh-text-block {
+    display: flex; flex-direction: column; align-items: flex-start;
+  }
+  .lfh-brand {
+    font-size: 13px; font-weight: 400; color: #333; letter-spacing: 0.5px;
+    font-family: 'Times New Roman', Times, serif; white-space: nowrap;
+  }
+  .lfh-cohen { font-weight: 700; }
+  .lfh-since {
+    font-size: 8px; letter-spacing: 3px; color: #555; margin-top: 2px;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  .lfh-right {
+    font-size: 7px; color: #444; vertical-align: middle;
+    text-align: right; width: 33%; line-height: 1.7;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  .letter-divider   { border: none; border-top: 1px solid #000; margin: 10px 0 14px; }
+  .letter-date      { font-size: 12pt; color: #000; font-family: 'Times New Roman', Times, serif; }
+
+  .letter-date-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0; }
+  .letter-without-prejudice { font-size: 12pt; font-style: italic; color: #000; font-family: 'Times New Roman', Times, serif; }
+  .letter-submission-note { font-size: 12pt; margin-top: 0; margin-bottom: 18px; color: #000; font-style: italic; font-family: 'Times New Roman', Times, serif; }
+
+  .letter-header-table { width: 100%; border-collapse: collapse; margin-bottom: 18px; font-size: 12pt; font-family: 'Times New Roman', Times, serif; }
+  .letter-header-table td { border: none; padding: 3px 8px; vertical-align: top; color: #000; }
+  .letter-header-table td:first-child {
+    font-weight: 700;
+    width: 18%;
+    background: transparent;
+    color: #000;
+    white-space: nowrap;
+  }
+
+  .letter-section-header {
+    font-weight: 700;
+    text-decoration: underline;
+    margin: 18px 0 7px;
+    font-size: 12pt;
+    font-family: 'Times New Roman', Times, serif;
+    color: #000;
+  }
+  .letter-para { margin-bottom: 9px; text-align: justify; font-size: 12pt; font-family: 'Times New Roman', Times, serif; color: #000; }
+
+  .letter-table { width: 100%; border-collapse: collapse; font-size: 12pt; font-family: 'Times New Roman', Times, serif; margin-bottom: 12px; }
+  .letter-table th {
+    background: #f0f0f0;
+    border: 1px solid #999;
+    padding: 5px 7px;
+    font-weight: 700;
+    text-align: left;
+    color: #000;
+  }
+  .letter-table td { border: 1px solid #999; padding: 5px 7px; color: #000; }
+
+  .letter-sig { margin-top: 28px; font-family: 'Times New Roman', Times, serif; }
+  .letter-sig p { margin-bottom: 5px; font-size: 12pt; color: #000; }
+  .letter-sig .firm-sig { font-weight: 700; letter-spacing: 1px; font-size: 12pt; color: #000; }
+  .letter-footnotes { border-top: 1px solid #ccc; margin-top: 22px; padding-top: 8px; font-size: 10pt; font-family: 'Times New Roman', Times, serif; color: #888; }
+  .letter-footnotes p { margin-bottom: 3px; font-style: italic; }
+  .letter-attachments ul { margin-left: 18px; font-size: 12pt; font-family: 'Times New Roman', Times, serif; }
+  .letter-attachments li { margin-bottom: 3px; }
+
+  /* ─── EDIT PANE ─── */
+  .edit-pane-inner { padding: 20px; flex: 1; overflow-y: auto; }
+  .section-edit-block { margin-bottom: 18px; }
+  .section-edit-block label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .section-edit-block textarea {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    padding: 10px 12px;
+    font-family: 'Times New Roman', serif;
+    font-size: 13px;
+    line-height: 1.65;
+    resize: vertical;
+    min-height: 90px;
+  }
+  .section-edit-block textarea:focus { outline: none; border-color: var(--accent); }
+
+  /* ─── SPINNER ─── */
+  .spinner-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 14px;
+    color: var(--muted);
+  }
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border);
+    border-top-color: var(--pink);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ─── STATUS BAR ─── */
+  .status-bar {
+    padding: 10px 22px;
+    font-size: 14px;
+    border-top: 1px solid var(--border);
+    background: var(--card);
+    color: var(--muted);
+    flex-shrink: 0;
+    min-height: 42px;
+  }
+  .status-bar.ok   { color: var(--green); }
+  .status-bar.err  { color: var(--red); }
+  .status-bar.info { color: var(--accent); }
+
+  /* ─── BADGE ─── */
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 5px;
+  }
+  .badge-green { background: var(--green-pale); color: var(--green); border: 1px solid #a8d5bc; }
+  .badge-gold  { background: var(--gold-pale);  color: var(--gold);  border: 1px solid #e8d08a; }
+
+  /* ─── IRPA CLASSIFICATION BOX ─── */
+  .irpa-badge-box {
+    min-height: 38px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--input-bg);
+    display: flex; align-items: center;
+    padding: 0 12px;
+  }
+  .irpa-pill {
+    display: inline-block;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.5px; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 20px;
+  }
+  .irpa-serious      { background: #fde8ec; color: #9b1b30; border: 1px solid #f5a8b5; }
+  .irpa-criminality  { background: #fff3e0; color: #9a5000; border: 1px solid #ffc97a; }
+  .irpa-empty        { color: var(--muted); font-size: 13px; }
+
+  /* ─── PARSING STATUS ─── */
+  #pdfStatus {
+    font-size: 14px;
+    color: var(--muted);
+    min-height: 22px;
+    margin: 8px 0;
+  }
+
+  /* ─── MAIN TAB BAR ─── */
+  .main-tab-bar {
+    display: flex;
+    background: #6e1a38;
+    border-bottom: 1px solid rgba(220,100,140,0.25);
+    padding: 0 24px;
+    gap: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .main-tab {
+    padding: 10px 22px;
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.50);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.15s, border-color 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    letter-spacing: 0.2px;
+  }
+  .main-tab:hover  { color: rgba(255,255,255,0.8); }
+  .main-tab.active { color: #fff; border-bottom-color: var(--accent); }
+  .saved-count-badge {
+    background: var(--accent);
+    color: #fff;
+    border-radius: 10px;
+    padding: 1px 7px;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 20px;
+    text-align: center;
+  }
+
+  /* ─── SAVED LETTERS PANEL ─── */
+  .saved-panel {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 28px 36px 60px;
+    position: relative;
+    z-index: 1;
+  }
+  .saved-panel-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .saved-panel-title {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--accent);
+    flex: 1;
+  }
+  .saved-total-count {
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 600;
+    flex: 1;
+  }
+  .saved-search {
+    width: 300px;
+    padding: 10px 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    font-family: inherit;
+    font-size: 13px;
+    background: var(--card);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .saved-search:focus { border-color: var(--accent); }
+  .saved-group-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 20px 0 8px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 12px;
+  }
+  .saved-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.15s, border-color 0.15s;
+  }
+  .saved-card:hover { box-shadow: var(--shadow-md); border-color: var(--accent-mid); }
+  .saved-card-body  { flex: 1; min-width: 0; }
+  .saved-card-name  { font-size: 17px; font-weight: 900; color: var(--text); margin-bottom: 8px; }
+  .saved-card-meta  {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 6px;
+  }
+  .saved-chip {
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .saved-card-offence { font-size: 13px; color: var(--muted); margin-bottom: 5px; }
+  .saved-card-date    { font-size: 12px; color: #c0a0b0; }
+  .saved-card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: stretch;
+    flex-shrink: 0;
+    min-width: 120px;
+  }
+  .saved-del-btn {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 3px 6px;
+    border-radius: 4px;
+    text-align: center;
+    transition: color 0.15s, background 0.15s;
+    font-family: inherit;
+  }
+  .saved-del-btn:hover { color: var(--red); background: var(--red-pale); }
+  .saved-empty {
+    text-align: center;
+    padding: 70px 0;
+    color: var(--muted);
+  }
+  .saved-empty-icon  { font-size: 44px; margin-bottom: 14px; }
+  .saved-empty-title { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
+  .saved-empty-sub   { font-size: 13px; }
+
+  /* ─── CM FOLDER TABS ─── */
+  .cm-folder-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .cm-folder-tab {
+    padding: 7px 16px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: var(--card);
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .cm-folder-tab:hover { border-color: var(--accent-mid); color: var(--accent); }
+  .cm-folder-tab.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .cm-folder-tab .cm-tab-count {
+    background: rgba(255,255,255,0.25);
+    border-radius: 10px;
+    padding: 0 6px;
+    font-size: 10px;
+    font-weight: 900;
+  }
+  .cm-folder-tab:not(.active) .cm-tab-count {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+
+  /* ─── POE BLOCKQUOTE ─── */
+  .poe-enf-quote {
+    margin: 6px 0 6px 24px;
+    padding: 8px 14px;
+    border-left: 3px solid var(--accent-mid);
+    font-size: 12px;
+    font-style: italic;
+    color: #444;
+    line-height: 1.7;
+  }
+
+  /* ── Raccoon shooting animation ── */
+  @keyframes gun-recoil {
+    0%, 96%    { transform: translate(0, 0) rotate(0deg); }
+    96.5%      { transform: translate(-4px, -7px) rotate(-8deg); }
+    97%        { transform: translate(-2px, -4px) rotate(-4deg); }
+    97.5%      { transform: translate(-4px, -7px) rotate(-8deg); }
+    98%        { transform: translate(0, 0) rotate(0deg); }
+    100%       { transform: translate(0, 0) rotate(0deg); }
+  }
+  @keyframes muzzle-flash {
+    0%, 96%    { opacity: 0; transform: scale(0); }
+    96.4%      { opacity: 1; transform: scale(1.4); }
+    96.8%      { opacity: 0; transform: scale(0.6); }
+    97.2%      { opacity: 1; transform: scale(1.1); }
+    97.5%      { opacity: 0; transform: scale(0); }
+    100%       { opacity: 0; transform: scale(0); }
+  }
+  @keyframes bang-text {
+    0%, 95.8%  { opacity: 0; transform: scale(0.4) rotate(-10deg); }
+    96.3%      { opacity: 1; transform: scale(1.2) rotate(-10deg); }
+    97.2%      { opacity: 1; transform: scale(1) rotate(-10deg); }
+    97.8%      { opacity: 0; transform: scale(0.8) rotate(-10deg); }
+    100%       { opacity: 0; }
+  }
+  @keyframes body-jolt {
+    0%, 96%    { transform: translate(0, 0); }
+    96.5%      { transform: translate(2px, 0); }
+    97%        { transform: translate(0, 0); }
+    97.5%      { transform: translate(1px, 0); }
+    98%        { transform: translate(0, 0); }
+    100%       { transform: translate(0, 0); }
+  }
+  #raccoon-gun-arm {
+    animation: gun-recoil 10s infinite;
+    transform-origin: 0% 100%;
+    transform-box: fill-box;
+  }
+  #raccoon-body-group {
+    animation: body-jolt 10s infinite;
+    transform-box: fill-box;
+  }
+  #muzzle-flash-group {
+    animation: muzzle-flash 10s infinite;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+  #bang-group {
+    animation: bang-text 10s infinite;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+</style>
+</head>
+<body>
+
+<div class="site-header">
+  <!-- Criminal Bandit Raccoon SVG -->
+  <svg class="header-logo" viewBox="0 0 190 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+    <!-- ── EARS (pointed, behind head) ── -->
+    <polygon points="32,36 20,6  44,26" fill="#6a7278"/>
+    <polygon points="32,36 23,10 40,26" fill="#bcc0c4"/>
+    <polygon points="74,36 86,6  62,26" fill="#6a7278"/>
+    <polygon points="74,36 83,10 66,26" fill="#bcc0c4"/>
+
+    <!-- ── HEAD ── -->
+    <ellipse cx="53" cy="50" rx="32" ry="30" fill="#9aa0a6"/>
+    <!-- Forehead lighter -->
+    <ellipse cx="53" cy="32" rx="18" ry="11" fill="#c4c9cc"/>
+    <!-- Cheek pouches -->
+    <ellipse cx="28" cy="56" rx="12" ry="11" fill="#d0d4d6"/>
+    <ellipse cx="78" cy="56" rx="12" ry="11" fill="#d0d4d6"/>
+    <!-- Muzzle — broad, short -->
+    <ellipse cx="53" cy="67" rx="16" ry="12" fill="#dde0e2"/>
+
+    <!-- ── MASK STRINGS GOING AROUND BACK ── -->
+    <!-- Left string curving around back of head -->
+    <path d="M24 46 Q8 38 10 52 Q8 62 24 58" stroke="#16181c" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <!-- Right string curving around back of head -->
+    <path d="M82 46 Q98 38 96 52 Q98 62 82 58" stroke="#16181c" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+
+    <!-- ── BANDIT MASK BAND across eyes ── -->
+    <ellipse cx="40" cy="47" rx="13" ry="10" fill="#1e2026"/>
+    <ellipse cx="66" cy="47" rx="13" ry="10" fill="#1e2026"/>
+    <rect x="40" y="38" width="26" height="18" fill="#1e2026"/>
+
+    <!-- ── EYE WHITES ── -->
+    <ellipse cx="40" cy="47.5" rx="8" ry="7.5" fill="#f0efec"/>
+    <ellipse cx="66" cy="47.5" rx="8" ry="7.5" fill="#f0efec"/>
+
+    <!-- ── EYEBROWS (mischief — one up, one furrowed) ── -->
+    <path d="M58 37 Q66 33 74 36" stroke="#1e2026" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M30 38 Q38 35 46 38" stroke="#1e2026" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+    <!-- ── EYES: left squinting, right wide ── -->
+    <ellipse cx="40" cy="48" rx="4.5" ry="3"   fill="#12141a"/>
+    <ellipse cx="66" cy="47" rx="5"   ry="5.5" fill="#12141a"/>
+    <!-- Squint lid left -->
+    <path d="M33 45.5 Q40 41 47 45.5" fill="#1e2026"/>
+    <!-- Shine -->
+    <circle cx="41.5" cy="46.8" r="1.4" fill="white"/>
+    <circle cx="67.5" cy="45"   r="1.6" fill="white"/>
+
+    <!-- ── NOSE ── -->
+    <ellipse cx="53" cy="63" rx="4" ry="3" fill="#16181c"/>
+    <ellipse cx="52" cy="62" rx="1.4" ry="0.9" fill="#2e3038"/>
+
+    <!-- ── SMIRK with tooth ── -->
+    <path d="M44 70 Q52 77 62 69" stroke="#16181c" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <rect x="51" y="70" width="5" height="5.5" rx="1.5" fill="white"/>
+    <line x1="53.5" y1="70" x2="53.5" y2="75.5" stroke="#e0e0e0" stroke-width="0.8"/>
+
+    <!-- ── WHISKERS ── -->
+    <line x1="37" y1="64" x2="10" y2="59" stroke="#c8ccce" stroke-width="1.3"/>
+    <line x1="37" y1="67" x2="10" y2="68" stroke="#c8ccce" stroke-width="1.3"/>
+    <line x1="69" y1="64" x2="94" y2="59" stroke="#c8ccce" stroke-width="1.3"/>
+    <line x1="69" y1="67" x2="94" y2="68" stroke="#c8ccce" stroke-width="1.3"/>
+
+    <!-- ── NECK (connects head to body) ── -->
+    <rect x="43" y="76" width="20" height="16" rx="4" fill="#8a9096"/>
+
+    <!-- ── BODY GROUP (jolts on recoil) ── -->
+    <g id="raccoon-body-group">
+      <!-- ── BODY ── -->
+      <ellipse cx="53" cy="110" rx="26" ry="22" fill="#848c92"/>
+      <!-- Belly -->
+      <ellipse cx="53" cy="112" rx="17" ry="15" fill="#d4d8da"/>
+    </g>
+
+    <!-- ── LEFT ARM down ── -->
+    <path d="M30 100 Q18 112 16 124" stroke="#6a7278" stroke-width="8" stroke-linecap="round" fill="none"/>
+    <ellipse cx="15" cy="126" rx="5.5" ry="5" fill="#7a8086"/>
+
+    <!-- ── RIGHT ARM + GUN GROUP (recoils on fire) ── -->
+    <g id="raccoon-gun-arm">
+      <!-- Arm -->
+      <path d="M76 96 Q92 90 100 86" stroke="#6a7278" stroke-width="8" stroke-linecap="round" fill="none"/>
+      <!-- Hand -->
+      <ellipse cx="102" cy="84" rx="6" ry="5.5" fill="#7a8086"/>
+      <!-- Grip / handle (vertical) -->
+      <rect x="97" y="84" width="11" height="18" rx="3" fill="#222428"/>
+      <!-- Grip texture -->
+      <line x1="99" y1="88"  x2="106" y2="88"  stroke="#3a3c44" stroke-width="1"/>
+      <line x1="99" y1="91"  x2="106" y2="91"  stroke="#3a3c44" stroke-width="1"/>
+      <line x1="99" y1="94"  x2="106" y2="94"  stroke="#3a3c44" stroke-width="1"/>
+      <!-- Trigger guard -->
+      <path d="M98 84 Q93 92 98 99 Q103 99 108 84" stroke="#1e2028" stroke-width="1.8" fill="none"/>
+      <!-- Trigger -->
+      <line x1="101" y1="86" x2="99" y2="93" stroke="#888" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- Main slide / body of gun -->
+      <rect x="100" y="72" width="36" height="13" rx="3" fill="#2a2c32"/>
+      <!-- Slide highlight -->
+      <rect x="102" y="74" width="28" height="5" rx="2" fill="#3a3c44"/>
+      <!-- Barrel -->
+      <rect x="133" y="74" width="16" height="9" rx="2" fill="#1e2028"/>
+      <!-- Muzzle tip -->
+      <rect x="147" y="73" width="5" height="11" rx="1.5" fill="#12141a"/>
+      <!-- Front sight -->
+      <rect x="144" y="71" width="3" height="3" rx="1" fill="#555"/>
+      <!-- Rear sight -->
+      <rect x="102" y="71" width="4" height="3" rx="1" fill="#555"/>
+    </g>
+
+    <!-- ── MUZZLE FLASH (at barrel tip ~x=155 y=78) ── -->
+    <g id="muzzle-flash-group">
+      <polygon points="155,72 158,67 161,72 167,70 163,76 169,79 163,82 167,88 161,84 158,89 155,84 149,86 153,79 149,72"
+               fill="#ffaa00" opacity="0.95"/>
+      <ellipse cx="158" cy="79" rx="6" ry="5" fill="#fff7aa"/>
+    </g>
+
+    <!-- ── BANG TEXT ── -->
+    <g id="bang-group">
+      <text x="158" y="62" font-family="Impact, Arial Black, sans-serif" font-size="14"
+            font-weight="bold" fill="#ff2200" stroke="#fff" stroke-width="2"
+            paint-order="stroke" text-anchor="middle">BANG!</text>
+    </g>
+
+  </svg>
+
+  <div class="header-title-group">
+    <h1>He's Changed, Officer! &nbsp;·&nbsp; Cover Letter Generator</h1>
+    <p>Cohen Immigration Law &nbsp;·&nbsp; Temporary Resident Permit Applications</p>
+  </div>
+  <div class="header-sparkles">✦ ✦ ✦</div>
+</div>
+
+<!-- ── MAIN TAB BAR ── -->
+<div class="main-tab-bar">
+  <button class="main-tab active" data-tab="generator" onclick="switchMainTab('generator')">
+    ✦ Letter Generator
+  </button>
+  <button class="main-tab" data-tab="saved" onclick="switchMainTab('saved')">
+    📁 Saved Letters <span class="saved-count-badge" id="savedCountBadge" style="display:none"></span>
+  </button>
+</div>
+
+<!-- ── GENERATOR TAB ── -->
+<div id="main-tab-generator">
+<div class="layout">
+
+  <!-- ══════════════════════════════════
+       LEFT: FORM
+  ══════════════════════════════════ -->
+  <div class="form-panel">
+
+    <!-- 1. CLIENT INFORMATION -->
+    <div class="section-card">
+      <div class="section-card-header">👤 1. Client Information</div>
+      <div class="section-card-body">
+
+        <div class="row">
+          <div class="field">
+            <label>Full Legal Name *</label>
+            <input type="text" id="clientName" placeholder="e.g. John Michael Smith">
+          </div>
+          <div class="field">
+            <label>Date of Birth *</label>
+            <input type="date" id="clientDob">
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label>Nationality / Country of Citizenship</label>
+            <input type="text" id="clientNationality" placeholder="e.g. United States of America">
+          </div>
+          <div class="field">
+            <label>Salutation / Pronouns</label>
+            <select id="clientGender">
+              <option value="mr">Mr. (he/him)</option>
+              <option value="ms">Ms. (she/her)</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label>Case Manager <span style="color:var(--accent)">*</span></label>
+            <select id="caseManager">
+              <option value="">— Select case manager —</option>
+              <option value="Dimitra">Dimitra</option>
+              <option value="Sarah">Sarah</option>
+              <option value="Diane">Diane</option>
+              <option value="Sophie">Sophie</option>
+              <option value="Shealeigh">Shealeigh</option>
+            </select>
+          </div>
+          <div class="field" style="visibility:hidden"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 2. CRIMINAL REHABILITATION -->
+    <div class="section-card">
+      <div class="section-card-header">⚖ 2. Criminal Rehabilitation</div>
+      <div class="section-card-body">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:12px">If the client is pursuing Criminal Rehabilitation, select the applicable option. A paragraph will be automatically inserted at the start of the letter.</p>
+        <div class="field" style="margin-bottom:10px">
+          <select id="rehabStatus" onchange="handleRehabStatusChange()">
+            <option value="none">Not applying for Criminal Rehabilitation</option>
+            <option value="applied">Already applied — AOR received</option>
+            <option value="retained">Retained but not yet applied</option>
+          </select>
+        </div>
+        <div id="rehabAORFields" style="display:none">
+          <div class="row">
+            <div class="field">
+              <label>AOR / Submission Date</label>
+              <input type="date" id="rehabAORDate">
+            </div>
+            <div class="field">
+              <label>AOR File Number (e.g. RHB3039236)</label>
+              <input type="text" id="rehabAORNumber" placeholder="e.g. RHB3039236">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. APPLICATION TYPE -->
+    <div class="section-card">
+      <div class="section-card-header">🏛 3. Application Type</div>
+      <div class="section-card-body">
+        <div class="field" style="margin-bottom:12px">
+          <label>Where is this TRP application being submitted?</label>
+          <select id="applicationMode" onchange="handleApplicationModeChange()">
+            <option value="consulate">Consulate / IRCC (standard submission)</option>
+            <option value="poe-sole">Port of Entry — no prior Consulate submission</option>
+            <option value="poe-prior-consulate">Port of Entry — prior Consulate submission pending</option>
+          </select>
+        </div>
+        <div id="poeConsulateFields" style="display:none">
+          <p style="font-size:12px;color:var(--muted);margin-bottom:12px">A paragraph will be inserted at the start of the letter referencing the prior submission and its AOR.</p>
+          <div class="row">
+            <div class="field">
+              <label>Consulate City / Location</label>
+              <input type="text" id="poeConsulateCity" placeholder="e.g. Los Angeles">
+            </div>
+            <div class="field">
+              <label>Date Submitted to Consulate</label>
+              <input type="date" id="poeSubmissionDate">
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label>AOR / Application Number</label>
+              <input type="text" id="poeAORNumber" placeholder="e.g. TRP-2026-123456">
+            </div>
+            <div class="field" style="visibility:hidden"></div>
+          </div>
+          <div class="offence-upload-zone" id="poeAORDropZone"
+               style="margin-top:6px"
+               onclick="document.getElementById('poeAORUpload').click()"
+               ondragover="event.preventDefault(); this.classList.add('drag-over')"
+               ondragleave="this.classList.remove('drag-over')"
+               ondrop="this.classList.remove('drag-over'); handlePOEAORDrop(event)">
+            <input type="file" id="poeAORUpload" accept=".pdf,.doc,.docx" style="display:none"
+                   onchange="handlePOEAORUpload(this)">
+            <span class="offence-upload-zone-icon">📄</span>
+            <div class="offence-upload-zone-text">
+              <strong>Upload Consulate AOR Letter</strong><br>
+              PDF or Word — will be included as an attachment
+            </div>
+          </div>
+          <div class="offence-upload-status" id="poeAORStatus"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. TRAVEL DETAILS -->
+    <div class="section-card">
+      <div class="section-card-header">✈ 4. Travel Details</div>
+      <div class="section-card-body">
+        <div class="row">
+          <div class="field">
+            <label>Purpose of Travel *</label>
+            <select id="travelPurpose">
+              <option value="">Select purpose...</option>
+              <optgroup label="Tourism & Personal">
+                <option>Tourism / Leisure</option>
+                <option>Event</option>
+                <option>Cruise</option>
+                <option>Wedding / Engagement</option>
+                <option>Family Visit</option>
+                <option>Partner / Spouse Lives in Canada</option>
+                <option>Medical</option>
+                <option>Hunting / Fishing</option>
+              </optgroup>
+              <optgroup label="Work & Transit">
+                <option>Business</option>
+                <option>Conference</option>
+                <option>Flight Attendant</option>
+                <option>Pilot</option>
+                <option>Truck Driver</option>
+                <option>Transit to Alaska</option>
+                <option>Layover at Canadian Airport</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option>Other</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="field">
+            <label>Entry Type</label>
+            <select id="travelEntryType">
+              <option value="">Select...</option>
+              <option>Single Entry</option>
+              <option>Multiple Entries</option>
+            </select>
+          </div>
+        </div>
+        <div class="row three">
+          <div class="field">
+            <label>Proposed Entry Date *</label>
+            <input type="date" id="travelDateFrom">
+          </div>
+          <div class="field">
+            <label>Proposed Exit Date *</label>
+            <input type="date" id="travelDateTo">
+          </div>
+          <div class="field">
+            <label>Duration</label>
+            <input type="text" id="travelDuration" placeholder="auto-calculated" readonly>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label>Cities / Provinces to Visit</label>
+            <input type="text" id="travelLocations" placeholder="e.g. Montreal, QC; Toronto, ON">
+          </div>
+          <div class="field" style="visibility:hidden"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. OFFENCE HISTORY -->
+    <div class="section-card">
+      <div class="section-card-header">⚖ 5. Offence History</div>
+      <div class="section-card-body">
+
+        <div id="offenceList"></div>
+
+        <button class="btn btn-outline btn-sm" id="addOffenceBtn" onclick="addArrest()" style="margin-top:8px" disabled>
+          + Add Arrest
+        </button>
+      </div>
+    </div>
+
+    <!-- 6. TRAVEL STATEMENT -->
+    <div class="section-card">
+      <div class="section-card-header">📝 6. Travel Statement</div>
+      <div class="section-card-body">
+        <div class="text-upload-row">
+          <label class="text-upload-btn" id="stmtUploadBtn">
+            📎 Upload Files (PDF, Word — select multiple)
+            <input type="file" id="stmtUpload" accept=".pdf,.doc,.docx,.txt" multiple onchange="handleTextUpload(this,'travelStatement','stmtFileStatus')">
+          </label>
+          <span class="text-file-status" id="stmtFileStatus">or paste/type below</span>
+        </div>
+        <div class="field">
+          <label>Client's Travel Statement</label>
+          <textarea id="travelStatement" rows="6" placeholder="Upload a PDF above, or paste/type the client's travel statement here. The AI will incorporate this into the 'Reason for Request' section."></textarea>
+        </div>
+        <div class="text-upload-row" style="margin-top:10px">
+          <label class="text-upload-btn" id="travelDocsUploadBtn" style="background:var(--gold-pale);border-color:#e8d08a;color:var(--gold)">
+            ✈ Upload Supporting Travel Docs (flights, hotel, itinerary…)
+            <input type="file" id="travelDocsUpload" accept=".pdf,.doc,.docx,.txt" multiple onchange="handleTextUpload(this,'travelStatement','travelDocsStatus')">
+          </label>
+          <span class="text-file-status" id="travelDocsStatus"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. REHABILITATION -->
+    <div class="section-card">
+      <div class="section-card-header">🌱 7. Rehabilitation & Supporting Documents</div>
+      <div class="section-card-body">
+        <div class="text-upload-row">
+          <label class="text-upload-btn" id="rehabUploadBtn">
+            📎 Upload Files (PDF, Word — select multiple)
+            <input type="file" id="rehabUpload" accept=".pdf,.doc,.docx,.txt" multiple onchange="handleTextUpload(this,'rehabSummary','rehabFileStatus')">
+          </label>
+          <span class="text-file-status" id="rehabFileStatus">or paste/type summary below</span>
+        </div>
+        <div class="field" style="margin-bottom:12px">
+          <label>Rehabilitation Summary</label>
+          <textarea id="rehabSummary" rows="5" placeholder="Upload a PDF above, or type key facts: e.g. No further offences since 2019. Completed alcohol counselling. Stable employment for 5 years. Married with children."></textarea>
+        </div>
+        <div class="text-upload-row" style="margin-top:4px">
+          <label class="text-upload-btn" id="refsUploadBtn">
+            📎 Upload Reference Letters (PDF, Word — select multiple)
+            <input type="file" id="refsUpload" accept=".pdf,.doc,.docx,.txt" multiple onchange="handleTextUpload(this,'rehabSummary','refsFileStatus')">
+          </label>
+          <span class="text-file-status" id="refsFileStatus"></span>
+        </div>
+        <div class="row full">
+          <div class="field">
+            <label>Years Since Last Offence</label>
+            <input type="number" id="rehabYears" min="0" placeholder="e.g. 6">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. ATTACHMENTS -->
+    <div class="section-card">
+      <div class="section-card-header">📎 8. Attachments List</div>
+      <div class="section-card-body">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:10px">These items will appear in the Attachments section of the letter.</p>
+        <div class="attachment-list" id="attachmentList"></div>
+        <button class="btn btn-outline btn-sm" onclick="addAttachment()" style="margin-top:8px">+ Add Item</button>
+      </div>
+    </div>
+
+    <div class="generate-wrap">
+      <button class="btn-generate" id="generateBtn" onclick="generateLetter()">
+        ✨ Generate Cover Letter
+      </button>
+    </div>
+
+  </div><!-- /form-panel -->
+
+  <!-- ══════════════════════════════════
+       RIGHT: PREVIEW
+  ══════════════════════════════════ -->
+  <div class="preview-panel" id="previewPanel">
+    <div class="preview-header">
+      <span>Letter Preview</span>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="btn btn-sm" id="saveLetterBtn" style="display:none;background:var(--green,#2d7a4f);color:#fff" onclick="manualSaveLetter()">
+          💾 Save Letter
+        </button>
+        <button class="btn btn-gold btn-sm" id="downloadBtn" style="display:none" onclick="downloadDocx()">
+          ⬇ Download .docx
+        </button>
+      </div>
+    </div>
+
+    <div class="preview-tabs" id="previewTabs" style="display:none">
+      <div class="preview-tab active" data-tab="preview" onclick="switchTab('preview')">Preview</div>
+      <div class="preview-tab"        data-tab="edit"    onclick="switchTab('edit')">Edit Sections</div>
+    </div>
+
+    <div class="tab-pane active" id="tab-preview">
+      <div class="preview-content" id="previewContent">
+      </div>
+    </div>
+
+    <div class="tab-pane" id="tab-edit">
+      <div class="edit-pane-inner" id="editPaneInner">
+        <p style="color:var(--muted);font-size:12px">Generate the letter first, then edit individual sections here.</p>
+      </div>
+    </div>
+
+    <div class="status-bar" id="statusBar"></div>
+  </div>
+
+</div><!-- /layout -->
+</div><!-- /main-tab-generator -->
+
+<!-- ── SAVED LETTERS TAB ── -->
+<div id="main-tab-saved" style="display:none">
+  <div class="saved-panel">
+    <div class="saved-panel-header">
+      <div>
+        <div class="saved-panel-title">📁 Saved Letters</div>
+        <div class="saved-total-count" id="savedTotalCount"></div>
+      </div>
+      <input class="saved-search" id="savedSearch" type="text"
+             placeholder="Search by client name…" oninput="filterSavedLetters()">
+    </div>
+    <div class="cm-folder-tabs" id="cmFolderTabs"></div>
+    <div id="savedLettersList"></div>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+//  STATE
+// ─────────────────────────────────────────────
+let arrests     = [];
+let generated   = null;
+let equivBank   = [];
+
+fetch('/api/equivalency-bank').then(r => r.json()).then(d => {
+  equivBank = d;
+  const btn = document.getElementById('addOffenceBtn');
+  if (btn) btn.disabled = false;
+  if (arrests.length) renderArrests();
+});
+
+
+// ─────────────────────────────────────────────
+//  ARRESTS / CHARGES
+// ─────────────────────────────────────────────
+
+function renderIrpaBadge(irpa) {
+  if (!irpa) return '<span class="irpa-empty">—</span>';
+  const serious = /36\(1\)/.test(irpa);
+  const cls = serious ? 'irpa-serious' : 'irpa-criminality';
+  const label = serious ? 'Serious Criminality' : 'Criminality';
+  return `<span class="irpa-pill ${cls}">${label}</span>`;
+}
+
+// ─── Grouped offence categories for the dropdown ────────────────────────────
+const OFFENCE_GROUPS = [
+  { label: 'Driving Offences', keys: [
+    'DUI / DWI / Impaired Driving (Alcohol)',
+    'DUI / DWI / Impaired Driving (Drugs)',
+    'DUI / DWI / Impaired Driving — Causing Bodily Harm',
+    'DUI / DWI / Impaired Driving — Causing Death',
+    'Dangerous Driving / Dangerous Operation',
+    'Dangerous Operation — Causing Bodily Harm',
+    'Dangerous Operation — Causing Death',
+    'Failure to Stop / Hit and Run',
+    'Failure to Stop / Hit and Run — Causing Bodily Harm',
+    'Failure to Stop / Hit and Run — Causing Death',
+    'Driving While Prohibited / Suspended Licence',
+    'Operation While Prohibited',
+  ]},
+  { label: 'Assault Offences', keys: [
+    'Simple Assault / Battery',
+    'Assault Causing Bodily Harm',
+    'Aggravated Assault',
+    'Domestic Violence',
+  ]},
+  { label: 'Sexual & Child Offences', keys: [
+    'Sexual Assault',
+    'Incest',
+    'Child Pornography / CSAM — Making or Distribution',
+    'Child Pornography / CSAM — Possession or Accessing',
+  ]},
+  { label: 'Drug Offences — Cannabis', keys: [
+    'Marijuana / Cannabis — Simple Possession',
+    'Marijuana / Cannabis — Trafficking or Distribution',
+    'Marijuana / Cannabis — Import or Export',
+    'Marijuana / Cannabis — Production or Cultivation',
+  ]},
+  { label: 'Drug Offences — Schedule I (Cocaine / Heroin / Fentanyl / Opioids)', keys: [
+    'Possession — Schedule I Controlled Substance (Cocaine / Heroin / Fentanyl / Opioids / PCP)',
+    'Trafficking — Schedule I Controlled Substance (Cocaine / Heroin / Fentanyl / Opioids / Methamphetamine / MDMA)',
+    'Production / Manufacture — Schedule I Controlled Substance (Cocaine / Heroin / Fentanyl / Methamphetamine)',
+    'Import / Export — Schedule I or II Controlled Substance (Cocaine / Heroin / Fentanyl / Opioids)',
+  ]},
+  { label: 'Drug Offences — Schedule II (Synthetic Cannabinoids)', keys: [
+    'Possession — Schedule II Controlled Substance (Synthetic Cannabinoids / K2 / Spice)',
+    'Trafficking — Schedule II Controlled Substance (Synthetic Cannabinoids / K2 / Spice)',
+    'Production / Manufacture — Schedule II Controlled Substance (Synthetic Cannabinoids)',
+  ]},
+  { label: 'Drug Offences — Schedule III (Psychedelics)', keys: [
+    'Possession — Schedule III Controlled Substance (LSD / Psilocybin / Mescaline / Methylphenidate)',
+    'Trafficking — Schedule III Controlled Substance (LSD / Psilocybin / Mescaline)',
+    'Production / Manufacture — Schedule III Controlled Substance (LSD / Psilocybin / Mescaline)',
+    'Import / Export — Schedule III Controlled Substance (LSD / Psilocybin / Mescaline)',
+  ]},
+  { label: 'Drug Offences — Schedule IV (Benzodiazepines / Steroids)', keys: [
+    'Trafficking — Schedule IV Controlled Substance (Benzodiazepines / Barbiturates / Anabolic Steroids)',
+    'Production / Manufacture — Schedule IV Controlled Substance (Benzodiazepines / Barbiturates / Anabolic Steroids)',
+    'Import / Export — Schedule IV Controlled Substance (Benzodiazepines / Barbiturates / Anabolic Steroids)',
+  ]},
+  { label: 'Property & Financial Offences', keys: [
+    'Theft Under $5,000',
+    'Theft Over $5,000',
+    'Fraud Under $5,000',
+    'Fraud Over $5,000',
+    'Breaking and Entering / Burglary',
+    'Mischief / Vandalism',
+  ]},
+  { label: 'Other Offences', keys: [
+    'Weapons Possession (Prohibited/Restricted)',
+    'Disorderly Conduct / Causing a Disturbance',
+    'Resisting Arrest / Obstruction of Justice',
+  ]},
+];
+
+function buildOffenceOptions(selectVal) {
+  const grouped = new Set();
+  let html = '';
+  for (const group of OFFENCE_GROUPS) {
+    const available = group.keys.filter(k => equivBank.includes(k));
+    if (!available.length) continue;
+    html += `<optgroup label="${group.label}">`;
+    for (const k of available) {
+      grouped.add(k);
+      html += `<option value="${k}"${k === selectVal ? ' selected' : ''}>${k}</option>`;
+    }
+    html += `</optgroup>`;
+  }
+  // Catch any keys not in a group
+  const ungrouped = equivBank.filter(k => !grouped.has(k));
+  if (ungrouped.length) {
+    html += `<optgroup label="Other">`;
+    for (const k of ungrouped) {
+      html += `<option value="${k}"${k === selectVal ? ' selected' : ''}>${k}</option>`;
+    }
+    html += `</optgroup>`;
+  }
+  return html;
+}
+
+// Statute-to-bank-key hints — catches cases where the AI description is wrong
+// but the foreignStatute is reliable
+const STATUTE_HINTS = [
+  { pattern: /169A|dwi|dui|owi|oui|impaired.driv|drunk.driv|driv.*under.*influ/i, key: 'DUI / DWI / Impaired Driving (Alcohol)' },
+  { pattern: /drug.*impaired|driv.*drugs/i,                                         key: 'DUI / DWI / Impaired Driving (Drugs)' },
+  { pattern: /operat.*prohibit|prohibit.*operat/i,                                  key: 'Operation While Prohibited' },
+  { pattern: /dangerous.oper|reckless.driv|dangerous.driv/i,                        key: 'Dangerous Driving / Dangerous Operation' },
+  { pattern: /fail.*stop|hit.*run|leave.*scene/i,                                   key: 'Failure to Stop / Hit and Run' },
+  { pattern: /assault.*bodily|aggravated.assault/i,                                 key: 'Aggravated Assault' },
+  { pattern: /simple.assault|common.assault|^assault$|battery/i,                    key: 'Simple Assault / Battery' },
+  { pattern: /sexual.assault/i,                                                      key: 'Sexual Assault' },
+  { pattern: /theft.*over|grand.theft|larceny.*felony/i,                            key: 'Theft Over $5,000' },
+  { pattern: /theft|larceny|shoplifting|petit.theft/i,                              key: 'Theft Under $5,000' },
+  { pattern: /fraud.*over/i,                                                         key: 'Fraud Over $5,000' },
+  { pattern: /fraud/i,                                                               key: 'Fraud Under $5,000' },
+  { pattern: /marijuana.*traffick|cannabis.*traffick|weed.*traffick|pot.*traffick|distribut.*cannabis|distribut.*marijuana/i, key: 'Marijuana / Cannabis — Trafficking or Distribution' },
+  { pattern: /marijuana.*import|cannabis.*import|marijuana.*export|cannabis.*export/i, key: 'Marijuana / Cannabis — Import or Export' },
+  { pattern: /marijuana.*product|cannabis.*product|cultivat.*cannabis|cultivat.*marijuana|grow.*cannabis|grow.*marijuana/i, key: 'Marijuana / Cannabis — Production or Cultivation' },
+  { pattern: /possess.*marijuana|possess.*cannabis|marijuana.*possess|cannabis.*possess/i, key: 'Marijuana / Cannabis — Simple Possession' },
+  { pattern: /cocaine|heroin|fentanyl|oxycodone|meth(?!adone)|mdma|ecstasy|pcp|ketamine/i,  key: 'Trafficking — Schedule I Controlled Substance (Cocaine / Heroin / Fentanyl / Opioids / Methamphetamine / MDMA)' },
+  { pattern: /lsd|psilocyb|mescalin|dmt|tryptamine|methylphenidate|ritalin|2c-b/i,         key: 'Trafficking — Schedule III Controlled Substance (LSD / Psilocybin / Mescaline)' },
+  { pattern: /xanax|valium|alprazolam|diazepam|benzo|barbiturate|steroid|zolpidem|ambien/i, key: 'Trafficking — Schedule IV Controlled Substance (Benzodiazepines / Barbiturates / Anabolic Steroids)' },
+  { pattern: /possess.*traffick|traffick/i,                                                  key: 'Trafficking — Schedule I Controlled Substance (Cocaine / Heroin / Fentanyl / Opioids / Methamphetamine / MDMA)' },
+  { pattern: /drug.*possess|possess.*drug|possess.*controlled/i,                            key: 'Possession — Schedule I Controlled Substance (Cocaine / Heroin / Fentanyl / Opioids / PCP)' },
+  { pattern: /domestic.viol/i,                                                       key: 'Domestic Violence' },
+  { pattern: /break.*enter|burglary/i,                                               key: 'Breaking and Entering / Burglary' },
+  { pattern: /weapon|firearm|prohibited.arm/i,                                      key: 'Weapons Possession (Prohibited/Restricted)' },
+  { pattern: /mischief|vandal/i,                                                     key: 'Mischief / Vandalism' },
+  { pattern: /obstruct|resist.*arrest/i,                                             key: 'Resisting Arrest / Obstruction of Justice' },
+];
+
+// Find the best matching key in equivBank for a free-text description
+function findBankMatch(description, foreignStatute) {
+  if (!description || !equivBank.length) return null;
+
+  // 1. Try statute hints first — most reliable when foreignStatute is known
+  const combined = `${foreignStatute || ''} ${description}`;
+  for (const hint of STATUTE_HINTS) {
+    if (hint.pattern.test(combined)) {
+      const key = equivBank.find(k => k === hint.key);
+      if (key) return key;
+    }
+  }
+
+  // 2. Exact match on description
+  const lower = description.toLowerCase();
+  const exact = equivBank.find(k => k.toLowerCase() === lower);
+  if (exact) return exact;
+
+  // 3. Word-by-word match — only on meaningful words, avoid short ambiguous ones
+  const words = lower.split(/[\s,/()\-]+/).filter(w => w.length > 4);
+  for (const word of words) {
+    const match = equivBank.find(k => k.toLowerCase().includes(word));
+    if (match) return match;
+  }
+  return null;
+}
+
+// ─── helper: per-charge outcome label for table cells ───
+function chargeOutcomeLabel(charge) {
+  if (charge.outcome === 'conviction')       return charge.sentence || 'Conviction';
+  if (charge.outcome === 'dropped')          return 'Dropped';
+  if (charge.outcome === 'dismissed')        return 'Dismissed';
+  if (charge.outcome === 'dismissed_1203_4') return '1203.4 — Dismissed';
+  if (charge.outcome === 'deferred')         return 'Deferred Adjudication — Dismissed';
+  if (charge.outcome === 'diversion')        return 'Diversion Program — Dismissed';
+  if (charge.outcome === 'ard_pa')           return 'ARD — Dismissed';
+  if (charge.outcome === 'pbj_md')           return 'Probation Before Judgment — Dismissed';
+  if (charge.outcome === 'cwof_ma')          return 'CWOF — Dismissed';
+  if (charge.outcome === 'provincial')       return charge.sentence || 'Provincial Offence';
+  if (charge.outcome === 'expungement')      return 'Expungement';
+  return charge.outcome || '';
+}
+
+function addArrest(data = {}) {
+  let charges;
+  if (data.charges && data.charges.length) {
+    charges = data.charges.map(c => ({
+      description:          c.description          || c.offenceDescription || '',
+      outcome:              c.outcome              || 'conviction',
+      sentence:             c.sentence             || '',
+      programConditions:    c.programConditions    || '',
+      programCompletionDate:c.programCompletionDate|| c.sentenceCompletionDate || '',
+      expungementDate:      c.expungementDate      || '',
+      expungementStatute:   c.expungementStatute   || '',
+      foreignStatute:       c.foreignStatute       || '',
+      canadianStatute:      c.canadianStatute      || '',
+      canadianEquivalentLabel: c.canadianEquivalentLabel || '',
+      maxPunishment:        c.maxPunishment        || '',
+      irpa:                 c.irpa                 || '',
+    }));
+  } else {
+    charges = [{
+      description: data.description || data.offenceDescription || '',
+      outcome:     data.outcome     || 'conviction',
+      sentence:    data.sentence    || '',
+      programConditions:    '',
+      programCompletionDate: data.sentenceCompletionDate || '',
+      expungementDate:   data.expungementDate   || '',
+      expungementStatute: data.expungementStatute || '',
+      foreignStatute:  data.foreignStatute  || '',
+      canadianStatute: data.canadianStatute || '',
+      canadianEquivalentLabel: data.canadianEquivalentLabel || '',
+      maxPunishment:   data.maxPunishment   || '',
+      irpa:            data.irpa            || '',
+    }];
+  }
+
+  arrests.push({
+    date:           data.date    || data.offenceDate || '',
+    country:        data.country || 'United States',
+    state:          data.state   || '',
+    charges,
+    noRecords:      data.noRecords      || false,
+    noRecordsReason: data.noRecordsReason || 'purged',
+  });
+
+  const i = arrests.length - 1;
+  renderArrests();
+
+  // Async equivalency lookup for charges with description but no statute
+  arrests[i].charges.forEach((c, j) => {
+    if (c.description && !c.canadianStatute) {
+      const bankMatch = findBankMatch(c.description, c.foreignStatute);
+      if (bankMatch) {
+        fetch(`/api/equivalency-lookup?offence=${encodeURIComponent(bankMatch)}&date=${arrests[i].date}`)
+          .then(r => r.json())
+          .then(d => {
+            if (d.statute) {
+              c.canadianStatute         = d.statute;
+              c.maxPunishment           = d.maxPunishment || '';
+              c.canadianEquivalentLabel = d.canadianEquivalentLabel || '';
+              c.irpa                    = d.irpa || '';
+              const el     = document.getElementById(`arr-${i}-equiv-${j}`);
+              const badge  = document.getElementById(`arr-${i}-equiv-badge-${j}`);
+              const irpaEl = document.getElementById(`arr-${i}-irpa-${j}`);
+              if (el)     el.value = d.statute;
+              if (badge)  badge.innerHTML = `<span class="badge badge-green">AUTO-FILLED</span>`;
+              if (irpaEl) irpaEl.innerHTML = renderIrpaBadge(d.irpa);
+            }
+          })
+          .catch(() => {});
+      }
+    }
+  });
+}
+
+function addCharge(i) {
+  if (!arrests[i]) return;
+  arrests[i].charges.push({
+    description: '', outcome: 'conviction', sentence: '',
+    programConditions: '', programCompletionDate: '', expungementDate: '', expungementStatute: '',
+    foreignStatute: '', canadianStatute: '', canadianEquivalentLabel: '',
+    maxPunishment: '', irpa: '',
+  });
+  // Re-render just this arrest card
+  const existingEl = document.getElementById(`arrest-${i}`);
+  if (existingEl) {
+    const tmp = document.createElement('div');
+    renderArrestItem(tmp, i);
+    existingEl.replaceWith(tmp.firstChild);
+  }
+  scheduleLivePreview();
+}
+
+function removeCharge(i, j) {
+  if (!arrests[i]) return;
+  if (arrests[i].charges.length <= 1) return; // min 1 charge
+  arrests[i].charges.splice(j, 1);
+  const existingEl = document.getElementById(`arrest-${i}`);
+  if (existingEl) {
+    const tmp = document.createElement('div');
+    renderArrestItem(tmp, i);
+    existingEl.replaceWith(tmp.firstChild);
+  }
+  scheduleLivePreview();
+}
+
+function removeArrest(i) { arrests.splice(i, 1); renderArrests(); }
+
+function renderArrests() {
+  const container = document.getElementById('offenceList');
+  container.innerHTML = '';
+  arrests.forEach((_, i) => renderArrestItem(container, i));
+  scheduleLivePreview();
+}
+
+function renderArrestItem(container, i) {
+  const arr = arrests[i] || {};
+  const esc = v => (v || '').replace(/"/g, '&quot;');
+
+  const div = document.createElement('div');
+  div.className = 'offence-item';
+  div.id = `arrest-${i}`;
+
+  // Build each charge block HTML
+  const chargesHtml = (arr.charges || []).map((c, j) => {
+    const outcome = c.outcome || 'conviction';
+    const hideForDropped   = ['dropped','dismissed'].includes(outcome);
+    const is1203_4         = outcome === 'dismissed_1203_4';
+    const isProgramOutcome = ['deferred','diversion','ard_pa','pbj_md','cwof_ma'].includes(outcome);
+    const showSentence     = outcome === 'conviction' || is1203_4;
+    const showConditions   = isProgramOutcome;
+    const showCompletion   = ['conviction','deferred','diversion','ard_pa','pbj_md','cwof_ma'].includes(outcome);
+    const completionLbl    = isProgramOutcome ? 'Program Completion Date' : 'Sentence Completion Date';
+    const showExpunge      = outcome === 'expungement' || is1203_4;
+    const showExpungeStatute = outcome === 'expungement';
+    const expungeLbl       = is1203_4 ? 'Date of 1203.4 Dismissal' : 'Expungement Date';
+    const bankMatch        = findBankMatch(c.description, c.foreignStatute);
+    const isCustom         = !!(c.description && !bankMatch);
+    const selectVal        = bankMatch || (isCustom ? '__custom__' : '');
+    const canRemove        = (arr.charges || []).length > 1;
+
+    return `
+    <div class="charge-block" id="arr-${i}-charge-${j}">
+      <div class="charge-num">
+        Charge ${j + 1}
+        ${canRemove ? `<button class="remove-charge-btn" onclick="removeCharge(${i},${j})">✕ Remove Charge</button>` : ''}
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>Outcome *</label>
+          <select id="arr-${i}-outcome-${j}" onchange="handleOutcomeChange(${i},${j})">
+            <option value="conviction"${outcome==='conviction'?' selected':''}>Conviction</option>
+            <option value="dropped"${outcome==='dropped'?' selected':''}>Dropped Charge</option>
+            <option value="dismissed_1203_4"${outcome==='dismissed_1203_4'?' selected':''}>1203.4 - California</option>
+            <option value="deferred"${outcome==='deferred'?' selected':''}>Deferred Adjudication</option>
+            <option value="diversion"${outcome==='diversion'?' selected':''}>Diversion Program</option>
+            <option value="ard_pa"${outcome==='ard_pa'?' selected':''}>ARD - Pennsylvania</option>
+            <option value="pbj_md"${outcome==='pbj_md'?' selected':''}>Probation Before Judgment - Maryland</option>
+            <option value="cwof_ma"${outcome==='cwof_ma'?' selected':''}>CWOF - Massachusetts</option>
+            <option value="provincial"${outcome==='provincial'?' selected':''}>Provincial Offence</option>
+            <option value="expungement"${outcome==='expungement'?' selected':''}>Expungement</option>
+          </select>
+        </div>
+        <div class="field" style="visibility:hidden"></div>
+      </div>
+      <div class="row full" id="arr-${i}-type-row-${j}" style="${hideForDropped?'display:none':''}">
+        <div class="field">
+          <label>Offence Type (select for auto Canadian equivalency)</label>
+          <select id="arr-${i}-desc-${j}" onchange="handleChargeDescChange(${i},${j})">
+            <option value="">Select offence type...</option>
+            ${buildOffenceOptions(selectVal)}
+            <option value="__custom__"${isCustom?' selected':''}>Other / Custom</option>
+          </select>
+        </div>
+      </div>
+      <div class="row full" id="arr-${i}-custom-row-${j}" style="${isCustom && !hideForDropped ? '' : 'display:none'}">
+        <div class="field">
+          <label>Custom Offence Description</label>
+          <input type="text" id="arr-${i}-custom-${j}" value="${isCustom ? esc(c.description) : ''}" placeholder="Describe the offence as charged">
+        </div>
+      </div>
+      <div class="row" id="arr-${i}-sentence-row-${j}" style="${showSentence?'':'display:none'}">
+        <div class="field">
+          <label>Sentence Imposed</label>
+          <input type="text" id="arr-${i}-sentence-${j}" value="${esc(c.sentence)}" placeholder="e.g. 2 years probation, $1,000 fine">
+        </div>
+        <div class="field" style="visibility:hidden"></div>
+      </div>
+      <div class="row full" id="arr-${i}-conditions-row-${j}" style="${showConditions?'':'display:none'}">
+        <div class="field">
+          <label>Program Conditions</label>
+          <textarea id="arr-${i}-conditions-${j}" rows="2" placeholder="e.g. Complete alcohol counselling program, no alcohol consumption">${esc(c.programConditions)}</textarea>
+        </div>
+      </div>
+      <div class="row" id="arr-${i}-completion-row-${j}" style="${showCompletion?'':'display:none'}">
+        <div class="field">
+          <label id="arr-${i}-completion-label-${j}">${completionLbl}</label>
+          <input type="date" id="arr-${i}-completion-${j}" value="${esc(c.programCompletionDate)}">
+        </div>
+        <div class="field" style="visibility:hidden"></div>
+      </div>
+      <div class="row" id="arr-${i}-expunge-row-${j}" style="${showExpunge?'':'display:none'}">
+        <div class="field">
+          <label id="arr-${i}-expunge-label-${j}">${expungeLbl}</label>
+          <input type="date" id="arr-${i}-expunge-${j}" value="${esc(c.expungementDate)}" onchange="scheduleLivePreview()">
+        </div>
+        <div class="field" style="visibility:hidden"></div>
+      </div>
+      <div class="row" id="arr-${i}-expunge-statute-row-${j}" style="${showExpungeStatute?'':'display:none'}">
+        <div class="field">
+          <label>Expungement Statute</label>
+          <input type="text" id="arr-${i}-expunge-statute-${j}" value="${esc(c.expungementStatute || '')}" placeholder="e.g. 18 Pa. C.S. § 9122" oninput="scheduleLivePreview()">
+        </div>
+        <div class="field" style="visibility:hidden"></div>
+      </div>
+      <div class="row" id="arr-${i}-foreign-row-${j}" style="${hideForDropped?'display:none':''}">
+        <div class="field">
+          <label>Foreign Statute</label>
+          <input type="text" id="arr-${i}-foreign-${j}" value="${esc(c.foreignStatute)}" placeholder="e.g. Penal Code §23152(a) VC">
+        </div>
+        <div class="field" style="visibility:hidden"></div>
+      </div>
+      <div class="row" id="arr-${i}-equiv-row-${j}" style="${hideForDropped?'display:none':''}">
+        <div class="field" style="flex:2">
+          <label>Canadian Equivalent <span id="arr-${i}-equiv-badge-${j}">${(!hideForDropped && outcome !== 'provincial' && c.canadianStatute) ? '<span class="badge badge-green">AUTO-FILLED</span>' : ''}</span></label>
+          <input type="text" id="arr-${i}-equiv-${j}"
+            value="${outcome === 'provincial' ? 'N/A' : esc(c.canadianStatute)}"
+            placeholder="Auto-fills from equivalency bank when you select an offence type above"
+            ${outcome === 'provincial' ? 'readonly style="color:var(--muted);background:var(--surface2,#f5f5f5)"' : ''}>
+        </div>
+        <div class="field" style="flex:1">
+          <label>IRPA Classification</label>
+          <div id="arr-${i}-irpa-${j}" class="irpa-badge-box">${outcome === 'provincial' ? '' : renderIrpaBadge(c.irpa)}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  div.innerHTML = `
+    <div class="offence-num">Arrest ${i + 1}</div>
+    <button class="remove-btn" onclick="removeArrest(${i})">✕ Remove Arrest</button>
+    <div class="row">
+      <div class="field">
+        <label>Date of Arrest *</label>
+        <input type="date" id="arr-date-${i}" value="${esc(arr.date)}" onchange="onArrestDateChange(${i})">
+      </div>
+      <div class="field">
+        <label>Country</label>
+        <select id="arr-country-${i}" onchange="handleArrestCountryChange(${i})">
+          <option value="United States"${(arr.country||'United States')==='United States'?' selected':''}>United States</option>
+          <option value="United Kingdom"${arr.country==='United Kingdom'?' selected':''}>United Kingdom</option>
+          <option value="Australia"${arr.country==='Australia'?' selected':''}>Australia</option>
+          <option value="other"${(arr.country&&!['United States','United Kingdom','Australia'].includes(arr.country))?' selected':''}>Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="row" id="arr-state-row-${i}" style="${(arr.country||'United States')==='United States'?'':'display:none'}">
+      <div class="field">
+        <label>State (US)</label>
+        <input type="text" id="arr-state-${i}" value="${esc(arr.state)}" placeholder="e.g. Oklahoma, California">
+      </div>
+      <div class="field" style="visibility:hidden"></div>
+    </div>
+    <div class="row" id="arr-country-custom-row-${i}" style="${(arr.country&&!['United States','United Kingdom','Australia'].includes(arr.country))?'':'display:none'}">
+      <div class="field">
+        <label>Specify Country</label>
+        <input type="text" id="arr-country-custom-${i}" value="${(arr.country&&!['United States','United Kingdom','Australia'].includes(arr.country))?esc(arr.country):''}" placeholder="Enter country name">
+      </div>
+      <div class="field" style="visibility:hidden"></div>
+    </div>
+    ${chargesHtml}
+    <button class="add-charge-btn" onclick="addCharge(${i})">+ Add Charge</button>
+    <div style="margin-top:8px; display:flex; align-items:center; gap:8px;">
+      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:var(--muted)">
+        <input type="checkbox" id="arr-no-records-${i}"
+               onchange="handleNoRecordsToggle(${i})"
+               ${arr.noRecords ? 'checked' : ''}
+               style="accent-color:var(--accent);width:15px;height:15px;">
+        No court records available
+      </label>
+    </div>
+    <div id="arr-no-records-reason-row-${i}" style="margin-top:8px; display:${arr.noRecords ? '' : 'none'}">
+      <div class="field">
+        <label>Reason records unavailable</label>
+        <select id="arr-no-records-reason-${i}" onchange="if(arrests[${i}]) arrests[${i}].noRecordsReason = this.value">
+          <option value="purged"   ${(arr.noRecordsReason||'purged')==='purged'  ? 'selected':''}>Records purged</option>
+          <option value="untimely" ${arr.noRecordsReason==='untimely'? 'selected':''}>Client unable to obtain on time</option>
+        </select>
+      </div>
+    </div>
+  `;
+  container.appendChild(div);
+}
+
+async function _unused_uploadOffenceRecords(idx, input) {
+  const files = Array.from(input.files || []);
+  if (!files.length) return;
+
+  const statusEl = document.getElementById(`arr-upload-status-${idx}`);
+  if (statusEl) statusEl.innerHTML =
+    `<span style="color:var(--muted)">⏳ Parsing ${files.length} file(s) for Arrest ${idx + 1}…</span>`;
+
+  const allRaw = [];
+  const errors = [];
+
+  for (let i = 0; i < files.length; i++) {
+    if (files.length > 1 && statusEl) statusEl.innerHTML =
+      `<span style="color:var(--muted)">⏳ Parsing file ${i + 1} of ${files.length}…</span>`;
+
+    const formData = new FormData();
+    const isDoc = /\.docx?$/i.test(files[i].name);
+    formData.append(isDoc ? 'file' : 'pdf', files[i]);
+
+    try {
+      let offenceList = [];
+      if (isDoc) {
+        const r    = await fetch('/api/extract-text', { method: 'POST', body: formData });
+        const data = await r.json();
+        if (data.error) throw new Error(data.error);
+        const pf = new FormData();
+        const blob = new Blob([data.text], { type: 'text/plain' });
+        pf.append('pdf', new File([blob], files[i].name + '.txt', { type: 'application/pdf' }));
+        const pr = await fetch('/api/parse-pdf', { method: 'POST', body: pf });
+        const pd = await pr.json();
+        offenceList = pd.offences || [];
+      } else {
+        const r    = await fetch('/api/parse-pdf', { method: 'POST', body: formData });
+        const data = await r.json();
+        if (data.error) throw new Error(data.error);
+        offenceList = data.offences || [];
+      }
+
+      offenceList.forEach(o => allRaw.push({
+        date:                    o.date                   || o.offenceDate        || '',
+        country:                 o.country                || 'United States',
+        description:             o.description            || o.offenceDescription || '',
+        sentence:                o.sentence               || '',
+        sentenceCompletionDate:  o.sentenceCompletionDate || '',
+        foreignStatute:          o.foreignStatute         || '',
+        caseNumber:              o.caseNumber             || '',
+      }));
+    } catch (err) {
+      errors.push(`${files[i].name}: ${err.message}`);
+    }
+  }
+
+  if (!allRaw.length) {
+    if (statusEl) statusEl.innerHTML = errors.length
+      ? `<span style="color:var(--red)">✗ ${errors.join('; ')}</span>`
+      : `<span style="color:var(--muted)">No offence data detected in uploaded files.</span>`;
+    return;
+  }
+
+  // Merge all records
+  const mergedList = mergeOffencesClient(allRaw);
+  const result = mergedList.reduce((acc, o) => {
+    if (!acc) return { ...o };
+    const parts = [acc.sentence, o.sentence].map(s => (s||'').trim()).filter(Boolean)
+      .filter((s, i, a) => a.indexOf(s) === i);
+    return {
+      date:                    acc.date || o.date,
+      country:                 acc.country || o.country,
+      description:             acc.description || o.description,
+      sentence:                parts.join('; '),
+      sentenceCompletionDate:  (!acc.sentenceCompletionDate || o.sentenceCompletionDate > acc.sentenceCompletionDate)
+                                 ? o.sentenceCompletionDate : acc.sentenceCompletionDate,
+      foreignStatute:          (o.foreignStatute||'').length > (acc.foreignStatute||'').length
+                                 ? o.foreignStatute : acc.foreignStatute,
+      caseNumber:              acc.caseNumber || o.caseNumber,
+    };
+  }, null);
+
+  if (!result) return;
+
+  const arr = arrests[idx];
+  // Merge arrest-level fields
+  if (result.date    && !arr.date)    arr.date    = result.date;
+  if (result.country && !arr.country) arr.country = result.country;
+
+  // Merge into first charge (or update first charge that has no description)
+  const targetChargeIdx = arr.charges.findIndex(c => !c.description);
+  const tIdx = targetChargeIdx >= 0 ? targetChargeIdx : 0;
+  const cur = arr.charges[tIdx];
+
+  if (result.description && !cur.description) cur.description = result.description;
+  if (result.foreignStatute && (result.foreignStatute.length > (cur.foreignStatute||'').length))
+    cur.foreignStatute = result.foreignStatute;
+  if (result.sentenceCompletionDate && (!cur.programCompletionDate || result.sentenceCompletionDate > cur.programCompletionDate))
+    cur.programCompletionDate = result.sentenceCompletionDate;
+  if (result.sentence) {
+    if (cur.sentence) {
+      const parts = [cur.sentence, result.sentence].map(s=>(s||'').trim()).filter(Boolean)
+        .filter((s,i,a)=>a.indexOf(s)===i);
+      cur.sentence = parts.join('; ');
+    } else {
+      cur.sentence = result.sentence;
+    }
+  }
+
+  // Re-render this arrest card
+  const existingEl = document.getElementById(`arrest-${idx}`);
+  if (existingEl) {
+    const tmp = document.createElement('div');
+    renderArrestItem(tmp, idx);
+    existingEl.replaceWith(tmp.firstChild);
+  }
+
+  const newStatus = document.getElementById(`arr-upload-status-${idx}`);
+  if (newStatus) {
+    const errNote = errors.length
+      ? ` &nbsp;·&nbsp; <span style="color:var(--red)">✗ ${errors.length} file(s) failed</span>` : '';
+    newStatus.innerHTML =
+      `<span style="color:var(--green)">✓ ${files.length - errors.length} file(s) parsed & merged into this arrest.</span>${errNote}`;
+  }
+
+  // Trigger Canadian equivalency lookup for charge 0 if needed
+  if (cur.description && !cur.canadianStatute) {
+    const bankMatch = findBankMatch(cur.description, cur.foreignStatute);
+    if (bankMatch) {
+      fetch(`/api/equivalency-lookup?offence=${encodeURIComponent(bankMatch)}&date=${arr.date}`)
+        .then(r => r.json())
+        .then(d => {
+          if (d.statute) {
+            cur.canadianStatute         = d.statute;
+            cur.maxPunishment           = d.maxPunishment || '';
+            cur.canadianEquivalentLabel = d.canadianEquivalentLabel || '';
+            cur.irpa                    = d.irpa || '';
+            const el     = document.getElementById(`arr-${idx}-equiv-${tIdx}`);
+            const badge  = document.getElementById(`arr-${idx}-equiv-badge-${tIdx}`);
+            const irpaEl = document.getElementById(`arr-${idx}-irpa-${tIdx}`);
+            if (el)     el.value = d.statute;
+            if (badge)  badge.innerHTML = `<span class="badge badge-green">AUTO-FILLED</span>`;
+            if (irpaEl) irpaEl.innerHTML = renderIrpaBadge(d.irpa);
+          }
+        }).catch(() => {});
+    }
+  }
+}
+
+async function handleChargeDescChange(i, j) {
+  const sel       = document.getElementById(`arr-${i}-desc-${j}`);
+  const customRow = document.getElementById(`arr-${i}-custom-row-${j}`);
+  const val = sel?.value;
+
+  if (val === '__custom__') {
+    if (customRow) customRow.style.display = '';
+    const equivEl = document.getElementById(`arr-${i}-equiv-${j}`);
+    const badgeEl = document.getElementById(`arr-${i}-equiv-badge-${j}`);
+    if (equivEl) equivEl.value = '';
+    if (badgeEl) badgeEl.innerHTML = '';
+    return;
+  }
+  if (customRow) customRow.style.display = 'none';
+  if (!val) return;
+
+  const date = document.getElementById(`arr-date-${i}`)?.value || '';
+  try {
+    const r    = await fetch(`/api/equivalency-lookup?offence=${encodeURIComponent(val)}&date=${date}`);
+    const data = await r.json();
+    if (data.statute) {
+      const equivEl = document.getElementById(`arr-${i}-equiv-${j}`);
+      const badgeEl = document.getElementById(`arr-${i}-equiv-badge-${j}`);
+      const irpaEl  = document.getElementById(`arr-${i}-irpa-${j}`);
+      if (equivEl) equivEl.value = data.statute;
+      if (badgeEl) badgeEl.innerHTML = `<span class="badge badge-green">AUTO-FILLED</span>`;
+      if (irpaEl)  irpaEl.innerHTML = renderIrpaBadge(data.irpa);
+      if (arrests[i]?.charges[j]) {
+        arrests[i].charges[j].canadianStatute         = data.statute;
+        arrests[i].charges[j].maxPunishment           = data.maxPunishment || '';
+        arrests[i].charges[j].canadianEquivalentLabel = data.canadianEquivalentLabel || '';
+        arrests[i].charges[j].irpa                    = data.irpa || '';
+      }
+      scheduleLivePreview();
+    }
+  } catch (e) { /* ignore */ }
+}
+
+function handleOutcomeChange(i, j) {
+  const outcome = document.getElementById(`arr-${i}-outcome-${j}`)?.value || 'conviction';
+  if (arrests[i]?.charges[j]) arrests[i].charges[j].outcome = outcome;
+  scheduleLivePreview();
+
+  const hideForDropped   = ['dropped','dismissed'].includes(outcome);
+  const is1203_4         = outcome === 'dismissed_1203_4';
+  const isProgramOutcome = ['deferred','diversion','ard_pa','pbj_md','cwof_ma'].includes(outcome);
+  const showSentence     = outcome === 'conviction' || is1203_4;
+  const showConditions   = isProgramOutcome;
+  const showCompletion   = ['conviction','deferred','diversion','ard_pa','pbj_md','cwof_ma'].includes(outcome);
+  const showExpunge        = outcome === 'expungement' || is1203_4;
+  const showExpungeStatute = outcome === 'expungement';
+
+  const typeRow             = document.getElementById(`arr-${i}-type-row-${j}`);
+  const foreignRow          = document.getElementById(`arr-${i}-foreign-row-${j}`);
+  const equivRow            = document.getElementById(`arr-${i}-equiv-row-${j}`);
+  const sentenceRow         = document.getElementById(`arr-${i}-sentence-row-${j}`);
+  const conditionsRow       = document.getElementById(`arr-${i}-conditions-row-${j}`);
+  const completionRow       = document.getElementById(`arr-${i}-completion-row-${j}`);
+  const completionLbl       = document.getElementById(`arr-${i}-completion-label-${j}`);
+  const expungeRow          = document.getElementById(`arr-${i}-expunge-row-${j}`);
+  const expungeStatuteRow   = document.getElementById(`arr-${i}-expunge-statute-row-${j}`);
+  const expungeLbl          = document.getElementById(`arr-${i}-expunge-label-${j}`);
+  const customRow           = document.getElementById(`arr-${i}-custom-row-${j}`);
+
+  if (typeRow)             typeRow.style.display             = hideForDropped      ? 'none' : '';
+  if (foreignRow)          foreignRow.style.display          = hideForDropped      ? 'none' : '';
+  if (equivRow)            equivRow.style.display            = hideForDropped      ? 'none' : '';
+
+  // Provincial offence: lock Canadian Equivalent to N/A, hide IRPA
+  const equivEl = document.getElementById(`arr-${i}-equiv-${j}`);
+  const badgeEl = document.getElementById(`arr-${i}-equiv-badge-${j}`);
+  const irpaEl  = document.getElementById(`arr-${i}-irpa-${j}`);
+  if (outcome === 'provincial') {
+    if (equivEl) { equivEl.value = 'N/A'; equivEl.readOnly = true; equivEl.style.color = 'var(--muted)'; equivEl.style.background = 'var(--surface2,#f5f5f5)'; }
+    if (badgeEl) badgeEl.innerHTML = '';
+    if (irpaEl)  irpaEl.innerHTML  = '';
+  } else {
+    if (equivEl && equivEl.readOnly) { equivEl.value = ''; equivEl.readOnly = false; equivEl.style.color = ''; equivEl.style.background = ''; }
+  }
+  if (sentenceRow)         sentenceRow.style.display         = showSentence        ? ''     : 'none';
+  if (conditionsRow)       conditionsRow.style.display       = showConditions      ? ''     : 'none';
+  if (completionRow)       completionRow.style.display       = showCompletion      ? ''     : 'none';
+  if (expungeRow)          expungeRow.style.display          = showExpunge         ? ''     : 'none';
+  if (expungeStatuteRow)   expungeStatuteRow.style.display   = showExpungeStatute  ? ''     : 'none';
+  if (expungeLbl)          expungeLbl.textContent            = is1203_4 ? 'Date of 1203.4 Dismissal' : 'Expungement Date';
+  if (completionLbl)       completionLbl.textContent         = showConditions ? 'Program Completion Date' : 'Sentence Completion Date';
+  if (customRow && hideForDropped) customRow.style.display = 'none';
+}
+
+function handleNoRecordsToggle(i) {
+  const checked = document.getElementById(`arr-no-records-${i}`)?.checked;
+  if (arrests[i]) arrests[i].noRecords = !!checked;
+  const reasonRow  = document.getElementById(`arr-no-records-reason-row-${i}`);
+  const uploadZone = document.getElementById(`arr-upload-zone-${i}`);
+  if (reasonRow)  reasonRow.style.display  = checked ? '' : 'none';
+  if (uploadZone) uploadZone.style.display = checked ? 'none' : '';
+  if (checked) {
+    const sel = document.getElementById(`arr-no-records-reason-${i}`);
+    if (arrests[i]) arrests[i].noRecordsReason = sel?.value || 'purged';
+  }
+}
+
+function handleArrestCountryChange(i) {
+  const val        = document.getElementById(`arr-country-${i}`)?.value;
+  const stateRow   = document.getElementById(`arr-state-row-${i}`);
+  const customRow  = document.getElementById(`arr-country-custom-row-${i}`);
+  if (stateRow)  stateRow.style.display  = val === 'United States' ? '' : 'none';
+  if (customRow) customRow.style.display = val === 'other'         ? '' : 'none';
+  if (arrests[i]) arrests[i].country = val === 'other'
+    ? (document.getElementById(`arr-country-custom-${i}`)?.value || '')
+    : val;
+  scheduleLivePreview();
+}
+
+function onArrestDateChange(i) {
+  // Re-trigger equivalency lookup for all charges with descriptions
+  if (arrests[i]) {
+    arrests[i].charges.forEach((c, j) => {
+      const sel = document.getElementById(`arr-${i}-desc-${j}`);
+      if (sel?.value && sel.value !== '__custom__') handleChargeDescChange(i, j);
+    });
+  }
+  scheduleLivePreview();
+}
+
+function collectArrests() {
+  return arrests.map((arr, i) => {
+    const date    = document.getElementById(`arr-date-${i}`)?.value || '';
+    const countryRaw = document.getElementById(`arr-country-${i}`)?.value || 'United States';
+    const country = countryRaw === 'other'
+      ? (document.getElementById(`arr-country-custom-${i}`)?.value || '')
+      : countryRaw;
+    const state   = document.getElementById(`arr-state-${i}`)?.value?.trim() || '';
+    const noRecords     = document.getElementById(`arr-no-records-${i}`)?.checked || false;
+    const noRecordsReason = document.getElementById(`arr-no-records-reason-${i}`)?.value || 'purged';
+
+    const charges = (arr.charges || []).map((c, j) => {
+      const sel     = document.getElementById(`arr-${i}-desc-${j}`);
+      const isCustom = sel?.value === '__custom__';
+      const description = isCustom
+        ? (document.getElementById(`arr-${i}-custom-${j}`)?.value || '')
+        : (sel?.value || '');
+      return {
+        description,
+        outcome:               document.getElementById(`arr-${i}-outcome-${j}`)?.value || 'conviction',
+        sentence:              document.getElementById(`arr-${i}-sentence-${j}`)?.value || '',
+        programConditions:     document.getElementById(`arr-${i}-conditions-${j}`)?.value || '',
+        programCompletionDate: document.getElementById(`arr-${i}-completion-${j}`)?.value || '',
+        expungementDate:       document.getElementById(`arr-${i}-expunge-${j}`)?.value || '',
+        expungementStatute:    document.getElementById(`arr-${i}-expunge-statute-${j}`)?.value || '',
+        foreignStatute:        document.getElementById(`arr-${i}-foreign-${j}`)?.value || '',
+        canadianStatute:       document.getElementById(`arr-${i}-equiv-${j}`)?.value || '',
+        canadianEquivalentLabel: arr.charges[j]?.canadianEquivalentLabel || '',
+        maxPunishment:         arr.charges[j]?.maxPunishment || '',
+        irpa:                  arr.charges[j]?.irpa || '',
+      };
+    }).filter(c => c.description);
+
+    return { date, country, state, charges, noRecords, noRecordsReason };
+  }).filter(a => a.charges.length > 0);
+}
+
+// ─────────────────────────────────────────────
+//  DATE → DURATION AUTO-CALC
+// ─────────────────────────────────────────────
+['travelDateFrom','travelDateTo'].forEach(id => {
+  document.getElementById(id).addEventListener('change', () => {
+    const a = document.getElementById('travelDateFrom').value;
+    const b = document.getElementById('travelDateTo').value;
+    if (a && b) {
+      const days = Math.round((new Date(b) - new Date(a)) / 86400000);
+      document.getElementById('travelDuration').value = days > 0 ? `${days} day${days !== 1 ? 's' : ''}` : '';
+    }
+  });
+});
+
+// ─────────────────────────────────────────────
+//  TRAVEL STATEMENT GUIDE
+// ─────────────────────────────────────────────
+function toggleGuide() { document.getElementById('guideBox').classList.toggle('open'); }
+
+function handleRehabStatusChange() {
+  const val = document.getElementById('rehabStatus')?.value;
+  const aorFields = document.getElementById('rehabAORFields');
+  if (aorFields) aorFields.style.display = val === 'applied' ? '' : 'none';
+}
+
+// ─────────────────────────────────────────────
+//  ATTACHMENTS
+// ─────────────────────────────────────────────
+const DEFAULT_ATTACHMENTS = [
+  'Use of a Representative',
+  'Application for a Temporary Resident Permit',
+  'Personal Statement re Circumstances of Offence & Reason for Travel',
+  'Copy of Passport',
+  'FBI Report',
+  'Court Records',
+  'Supporting Travel Documents',
+  'Character Reference Letters',
+];
+
+function initAttachments() { DEFAULT_ATTACHMENTS.forEach(a => addAttachment(a)); }
+
+function addAttachment(value = '') {
+  const list = document.getElementById('attachmentList');
+  const item = document.createElement('div');
+  item.className = 'attachment-item';
+  item.innerHTML = `
+    <span style="color:var(--muted);font-size:16px">•</span>
+    <input type="text" value="${value}" placeholder="e.g. Reference letter from employer">
+    <button onclick="this.parentElement.remove()" title="Remove">✕</button>
+  `;
+  list.appendChild(item);
+}
+
+function collectAttachments() {
+  return Array.from(document.querySelectorAll('.attachment-item input'))
+    .map(i => i.value.trim()).filter(Boolean);
+}
+
+// ─────────────────────────────────────────────
+//  PDF UPLOAD
+// ─────────────────────────────────────────────
+// Client-side cross-file merge by caseNumber (same logic as server mergeOffences,
+// but uses caseNumber as the primary key so two PDFs about the same case collapse to one row)
+function mergeOffencesClient(list) {
+  const merged = [];
+  for (const o of list) {
+    // Primary key: caseNumber match
+    let existing = o.caseNumber
+      ? merged.find(m => m.caseNumber && m.caseNumber.trim() === o.caseNumber.trim())
+      : null;
+    // Fallback: same date + same statute family (strip sub-sections)
+    if (!existing && o.date) {
+      existing = merged.find(m => {
+        if (m.date !== o.date) return false;
+        const fa = (m.foreignStatute || '').match(/(\d+[A-Z]?\d*(?:\.\d+)?)/i);
+        const fb = (o.foreignStatute || '').match(/(\d+[A-Z]?\d*(?:\.\d+)?)/i);
+        const famA = fa ? fa[1].replace(/\.\d+.*$/, '') : '';
+        const famB = fb ? fb[1].replace(/\.\d+.*$/, '') : '';
+        if (!famA || !famB) return true; // date-only match when no statute
+        return famA === famB;
+      });
+    }
+    if (!existing) {
+      merged.push({ ...o });
+    } else {
+      // Merge sentence text (dedupe identical strings)
+      const parts = [existing.sentence, o.sentence]
+        .map(s => (s || '').trim()).filter(Boolean)
+        .filter((s, i, arr) => arr.indexOf(s) === i);
+      existing.sentence = parts.join('; ');
+      // Keep more specific statute
+      if ((o.foreignStatute || '').length > (existing.foreignStatute || '').length)
+        existing.foreignStatute = o.foreignStatute;
+      // Keep latest sentence completion date
+      if (o.sentenceCompletionDate && (!existing.sentenceCompletionDate ||
+          o.sentenceCompletionDate > existing.sentenceCompletionDate))
+        existing.sentenceCompletionDate = o.sentenceCompletionDate;
+      // Keep earliest offence date
+      if (o.date && o.date < existing.date) existing.date = o.date;
+      // Preserve caseNumber if incoming has it
+      if (!existing.caseNumber && o.caseNumber) existing.caseNumber = o.caseNumber;
+    }
+  }
+  return merged;
+}
+
+async function handlePDFUpload(input) {
+  const files = Array.from(input.files || []);
+  if (!files.length) return;
+
+  const statusEl = document.getElementById('pdfStatus');
+  setStatus(`Parsing ${files.length} court record file(s)…`, 'info');
+
+  // Collect all raw offences from every file before rendering
+  const allRaw = [];
+  const errors = [];
+
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    statusEl.innerHTML = files.length > 1
+      ? `<span style="color:var(--muted)">⏳ Processing ${i + 1} of ${files.length}: "${file.name}"…</span>`
+      : `<span style="color:var(--muted)">⏳ Parsing "${file.name}"…</span>`;
+
+    const formData = new FormData();
+    formData.append('pdf', file);
+
+    try {
+      const r    = await fetch('/api/parse-pdf', { method: 'POST', body: formData });
+      const data = await r.json();
+      if (data.error) throw new Error(data.error);
+
+      (data.offences || []).forEach(o => allRaw.push({
+        date:                   o.date                   || o.offenceDate        || '',
+        country:                o.country                || 'United States',
+        description:            o.description            || o.offenceDescription || '',
+        sentence:               o.sentence               || '',
+        sentenceCompletionDate: o.sentenceCompletionDate || '',
+        foreignStatute:         o.foreignStatute         || '',
+        caseNumber:             o.caseNumber             || '',
+      }));
+    } catch (err) {
+      errors.push(`${file.name}: ${err.message}`);
+    }
+  }
+
+  // Merge across all files — two records with the same case number become one
+  const merged = mergeOffencesClient(allRaw);
+
+  merged.forEach(o => addArrest(o));
+
+  const totalExtracted = merged.length;
+  if (totalExtracted > 0) {
+    const rawCount = allRaw.length;
+    const mergeNote = rawCount > totalExtracted
+      ? ` (${rawCount} records merged into ${totalExtracted} offence${totalExtracted > 1 ? 's' : ''})`
+      : '';
+    const errNote = errors.length ? ` &nbsp;·&nbsp; <span style="color:var(--red)">✗ ${errors.length} file(s) failed</span>` : '';
+    statusEl.innerHTML = `<span style="color:var(--green)">✓ Extracted ${totalExtracted} offence(s) from ${files.length - errors.length} file(s)${mergeNote}. Review below.</span>${errNote}`;
+    setStatus(`Extracted ${totalExtracted} offence(s).`, 'ok');
+  } else {
+    statusEl.innerHTML = errors.length
+      ? `<span style="color:var(--red)">✗ ${errors.join('; ')}</span>`
+      : `<span style="color:var(--muted)">No offences detected — add manually below.</span>`;
+    setStatus('No offences found.', 'err');
+  }
+}
+
+// ─────────────────────────────────────────────
+//  APPLICATION MODE
+// ─────────────────────────────────────────────
+function handleApplicationModeChange() {
+  const mode = document.getElementById('applicationMode')?.value;
+  const fields = document.getElementById('poeConsulateFields');
+  if (fields) fields.style.display = (mode === 'poe-prior-consulate') ? '' : 'none';
+}
+
+function handlePOEAORDrop(event) {
+  event.preventDefault();
+  const dt = event.dataTransfer;
+  if (!dt.files.length) return;
+  const input = document.getElementById('poeAORUpload');
+  const transfer = new DataTransfer();
+  Array.from(dt.files).forEach(f => transfer.items.add(f));
+  input.files = transfer.files;
+  handlePOEAORUpload(input);
+}
+
+function handlePOEAORUpload(input) {
+  const files = Array.from(input.files || []);
+  if (!files.length) return;
+  const statusEl = document.getElementById('poeAORStatus');
+  statusEl.innerHTML = `<span style="color:var(--green)">✓ ${files.map(f => f.name).join(', ')} — will be attached</span>`;
+}
+
+// ─────────────────────────────────────────────
+//  POE PARAGRAPH RENDERER
+// ─────────────────────────────────────────────
+function renderPOEBlock(text) {
+  if (!text) return '';
+  // Split on the ENF marker to extract the quote block
+  const enf4Pattern = /(According to Enforcement Manual \(ENF\) ?4:)([\s\S]*?)(Furthermore,[\s\S]*)$/i;
+  const match = text.match(enf4Pattern);
+  if (!match) return `<p class="letter-para">${text.replace(/\n/g, '<br>')}</p>`;
+
+  const openingText = text.slice(0, text.search(enf4Pattern)).trim();
+  const enf4Label   = match[1];
+  const quoteText   = match[2].trim();
+  const closingText = match[3].trim();
+
+  return `
+    ${openingText ? `<p class="letter-para">${openingText}</p>` : ''}
+    <p class="letter-para">${enf4Label}</p>
+    <blockquote class="poe-enf-quote">${quoteText}</blockquote>
+    <p class="letter-para">${closingText}</p>`;
+}
+
+// ─────────────────────────────────────────────
+//  GENERATE LETTER
+// ─────────────────────────────────────────────
+async function generateLetter() {
+  window._lastGenerated = false; // allow live preview to run until AI response arrives
+  const clientName = document.getElementById('clientName').value.trim();
+  const clientDob  = document.getElementById('clientDob').value;
+  if (!clientName) { setStatus('Please enter the client name.', 'err'); return; }
+  if (!clientDob)  { setStatus('Please enter the client date of birth.', 'err'); return; }
+  const arrestList = collectArrests();
+  if (!arrestList.length) { setStatus('Please add at least one arrest with a charge.', 'err'); return; }
+
+  const rehabStatus    = document.getElementById('rehabStatus')?.value || 'none';
+  const rehabAORDate   = document.getElementById('rehabAORDate')?.value || '';
+  const rehabAORNumber = document.getElementById('rehabAORNumber')?.value.trim() || '';
+
+  const appModeType      = document.getElementById('applicationMode')?.value || 'consulate';
+  const poeConsulateCity = document.getElementById('poeConsulateCity')?.value.trim() || '';
+  const poeSubmissionDate= document.getElementById('poeSubmissionDate')?.value || '';
+  const poeAORNumber     = document.getElementById('poeAORNumber')?.value.trim() || '';
+
+  const payload = {
+    client: {
+      name:        clientName,
+      dob:         clientDob,
+      nationality: document.getElementById('clientNationality').value.trim(),
+      gender:      document.getElementById('clientGender')?.value || 'mr',
+      caseManager: document.getElementById('caseManager')?.value || '',
+    },
+    travel: {
+      purpose:   document.getElementById('travelPurpose').value,
+      entryType: document.getElementById('travelEntryType').value,
+      dateFrom:  document.getElementById('travelDateFrom').value,
+      dateTo:    document.getElementById('travelDateTo').value,
+      duration:  document.getElementById('travelDuration').value,
+      locations: document.getElementById('travelLocations').value.trim(),
+    },
+    arrests:         arrestList,
+    travelStatement: document.getElementById('travelStatement').value.trim(),
+    rehabilitation: {
+      summary:     document.getElementById('rehabSummary').value.trim(),
+      yearsSince:  document.getElementById('rehabYears').value,
+      rehabStatus,
+      rehabAORDate,
+      rehabAORNumber,
+    },
+    applicationMode: {
+      type:           appModeType,
+      consulateCity:  poeConsulateCity,
+      submissionDate: poeSubmissionDate,
+      aorNumber:      poeAORNumber,
+    },
+    attachments: collectAttachments(),
+  };
+
+  document.getElementById('generateBtn').disabled = true;
+  document.getElementById('previewContent').innerHTML = `
+    <div class="spinner-wrap">
+      <div class="spinner"></div>
+      <p style="font-weight:600;color:var(--text)">Claude is drafting the cover letter…</p>
+      <p style="font-size:11px">This usually takes 15–30 seconds</p>
+    </div>`;
+  document.getElementById('downloadBtn').style.display   = 'none';
+  document.getElementById('saveLetterBtn').style.display = 'none';
+  document.getElementById('previewTabs').style.display   = 'none';
+  window._currentSavedId      = null;
+  window._currentSavedPayload = null;
+  setStatus('Generating letter…', 'info');
+
+  try {
+    const r    = await fetch('/api/generate-letter', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    const data = await r.json();
+    if (data.error) throw new Error(data.error);
+
+    generated           = data;
+    window._lastPayload = payload;
+
+    renderPreview(payload, data);
+    renderEditPane(data);
+    document.getElementById('downloadBtn').style.display  = '';
+    document.getElementById('saveLetterBtn').style.display = '';
+    document.getElementById('previewTabs').style.display  = 'flex';
+    switchTab('preview');
+    setStatus('Letter generated. Review and save when ready.', 'ok');
+
+    // Track session so re-generate upserts instead of duplicating
+    window._currentSavedPayload = { ...payload, attachments: collectAttachments() };
+  } catch (err) {
+    document.getElementById('previewContent').innerHTML =
+      `<div class="preview-placeholder"><p style="color:var(--red)">Error: ${err.message}</p></div>`;
+    setStatus('Error: ' + err.message, 'err');
+  } finally {
+    document.getElementById('generateBtn').disabled = false;
+  }
+}
+
+// ─────────────────────────────────────────────
+//  RENDER PREVIEW
+// ─────────────────────────────────────────────
+// ─────────────────────────────────────────────
+//  LETTER FORMATTING HELPERS
+// ─────────────────────────────────────────────
+const CM_INITIALS = { Dimitra: 'dm', Sarah: 'sk', Shealeigh: 'ss', Sophie: 'sp', Diane: 'dim' };
+
+function formatReField(name, dob) {
+  if (!name) return '<span class="live-empty-cell">Client name not entered</span>';
+  const parts = name.trim().split(/\s+/);
+  const last  = parts.pop().toUpperCase();
+  const first = parts.join(' ') || last; // fallback if single word
+  let dobStr = '';
+  if (dob) {
+    const d = new Date(dob + 'T12:00:00'); // noon to avoid timezone drift
+    dobStr = ` (DOB: ${d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })})`;
+  }
+  return `${last}, ${first}${dobStr}`;
+}
+
+function letterFirmHeader() {
+  return `
+    <table class="letter-firm-header-table">
+      <tr>
+        <td class="lfh-left">
+          420 NOTRE DAME W, SUITE 310<br>
+          MONTREAL, QUEBEC<br>
+          CANADA, H2Y 1V3
+        </td>
+        <td class="lfh-center">
+          <div class="lfh-brand-row">
+            <span class="lfh-leaf">🍁</span>
+            <span class="lfh-vbar"></span>
+            <span class="lfh-text-block">
+              <span class="lfh-brand"><span class="lfh-cohen">COHEN</span> IMMIGRATION LAW</span>
+              <span class="lfh-since">SINCE 1976</span>
+            </span>
+          </div>
+        </td>
+        <td class="lfh-right">
+          TEL: (514) 937-9445<br>
+          FAX: (514) 937-2618<br>
+          cohenlaw@canadavisa.com
+        </td>
+      </tr>
+    </table>
+  `;
+}
+
+function letterSig(caseManager) {
+  const initials = CM_INITIALS[caseManager] || (caseManager ? caseManager.toLowerCase().slice(0,2) : '');
+  const suffix = initials ? `/${initials}` : '';
+  return `
+    <div class="letter-sig">
+      <p>Respectfully yours,</p><br>
+      <p class="firm-sig">COHEN IMMIGRATION LAW</p>
+      <img src="/signature.png" style="display:block;max-width:170px;margin:4px 0 4px -17px">
+      <p>Per: Attorney Daniel Levy</p>
+      <p style="font-size:11px;color:#888">DL${suffix}</p>
+    </div>
+  `;
+}
+
+// ─────────────────────────────────────────────
+//  ARREST LEGAL NOTES (deferred / diversion footnotes)
+// ─────────────────────────────────────────────
+function buildArrestLegalNotes(arrestsArr, clientName = '') {
+  let deferredState = null, diversionState = null, cwofFound = false, ardFound = false, pbjFound = false, provincialFound = false;
+  const expungementCharges = [];
+  const charges1203 = [];
+  for (const arr of arrestsArr) {
+    for (const c of arr.charges || []) {
+      if (c.outcome === 'deferred'        && deferredState  === null) deferredState  = arr.state || arr.country || '';
+      if (c.outcome === 'diversion'       && diversionState === null) diversionState = arr.state || arr.country || '';
+      if (c.outcome === 'cwof_ma')          cwofFound = true;
+      if (c.outcome === 'ard_pa')           ardFound  = true;
+      if (c.outcome === 'pbj_md')           pbjFound      = true;
+      if (c.outcome === 'provincial')       provincialFound = true;
+      if (c.outcome === 'expungement')      expungementCharges.push(c);
+      if (c.outcome === 'dismissed_1203_4') charges1203.push(c);
+    }
+  }
+  const pStyle = 'class="letter-para" style="font-size:10pt;margin-top:8px"';
+  let html = '';
+
+  if (deferredState !== null) {
+    const s = deferredState || '[STATE]';
+    html += `<p ${pStyle}>* Under ${s} law, upon a plea of guilty and prior to any judgment of guilt, the court may defer proceedings on such conditions as it prescribes, without entering a judgment of guilt. Upon the successful completion of those conditions, the defendant is discharged without a court judgment of guilt, the verdict or plea of guilty is ordered expunged from the record, and the charge is dismissed with prejudice to any further action. It is our position that a deferred sentence under ${s} law is equivalent in nature and effect to a Conditional Discharge under section 730 of the Criminal Code of Canada. IRCC's policy with respect to conditional discharges is set out in Manual ENF 2/OP 18, Section 14.1, which provides that a conviction does not exist where the court grants an absolute or conditional discharge as provided for under the Criminal Code.</p>`;
+    html += `<p ${pStyle}>As our client's charge was fully dismissed and no finding or judgment of guilt was ever entered, we respectfully submit that this matter has no bearing on our client's admissibility to Canada, as it does not meet the inadmissibility criteria laid out in Section 36 of IRPA.</p>`;
+  }
+
+  if (provincialFound) {
+    html += `<p ${pStyle}>We submit that this charge has no equivalent offence under an Act of Parliament in Canada. In the present case, our client's conduct would instead fall under provincial legislation and would not constitute a federal criminal offence. Accordingly, we submit that this incident does not impact our client's admissibility to Canada on the basis of criminality.</p>`;
+  }
+
+  if (diversionState !== null) {
+    const s = diversionState || '[STATE]';
+    html += `<p ${pStyle}>† Under ${s} law, following the successful completion of a pre-trial diversion agreement's conditions, the charge is subsequently dismissed without a conviction being entered. It is our position that a diversion agreement under ${s} law is equivalent in nature and effect to a Conditional Discharge under section 730 of the Criminal Code of Canada. IRCC's policy with respect to conditional discharges is set out in Manual ENF 2/OP 18, Section 14.1, which provides that a conviction does not exist where the court grants an absolute or conditional discharge as provided for under the Criminal Code.</p>`;
+    html += `<p ${pStyle}>As our client's charge was fully dismissed and no finding or judgment of guilt was ever entered, we respectfully submit that this matter has no bearing on our client's admissibility to Canada, as it does not meet the inadmissibility criteria laid out in Section 36 of IRPA.</p>`;
+  }
+
+  if (cwofFound || ardFound || pbjFound) {
+    const parts    = (clientName || '').trim().split(/\s+/);
+    const lastName = parts.length > 1 ? parts[parts.length - 1] : (parts[0] || '[CLIENT]');
+    const gender   = document.getElementById('clientGender')?.value || 'mr';
+    const titleStr = gender === 'ms' ? 'Ms.' : 'Mr.';
+    const heShe    = gender === 'ms' ? 'she' : 'he';
+    const hisHer   = gender === 'ms' ? 'her' : 'his';
+    const titleLast = `${titleStr} ${lastName}`;
+
+    if (cwofFound) {
+      html += `<p ${pStyle}>§ We respectfully contend that a "Continued Without a Finding" disposition in the state of Massachusetts is not a criminal conviction and is equivalent to a Conditional Discharge under Section 730 of the Criminal Code of Canada. IRCC's Policy with respect to conditional discharge is set forth in Manual ENF 2/OP 18, Section 14.2: A conviction does not exist [when] the court grants an absolute or conditional discharge as provided for in the Criminal Code.</p>`;
+      html += `<p ${pStyle}>Additionally, we contend that ${titleLast} would not be inadmissible under the "committing of an act" provision. According to ENF 2/OP 18, Section 3.9, the "committing an act" provision should not be used when:</p>`;
+      html += `<p ${pStyle} style="margin-left:20px">— in most cases, when authorities in the foreign jurisdiction indicate they would not lay a charge or make known to an officer their decision or intent to drop the charges;</p>`;
+      html += `<p ${pStyle} style="margin-left:20px">— the trial is concluded and no conviction results (for example, acquittal, discharge, deferral);</p>`;
+    }
+
+    if (pbjFound) {
+      html += `<p ${pStyle}># Under Maryland law, Probation Before Judgment (PBJ) is a special legal disposition that allows a judge to strike a guilty plea or verdict and instead place a defendant on probation without entering a formal conviction. Upon successful completion of probation, the case is closed without a conviction being entered. It is our position that a PBJ is equivalent in nature and effect to a Conditional Discharge under section 730 of the Criminal Code of Canada. IRCC's policy with respect to conditional discharges is set out in Manual ENF 2/OP 18, Section 14.1, which provides that a conviction does not exist where the court grants an absolute or conditional discharge as provided for under the Criminal Code.</p>`;
+      html += `<p ${pStyle}>As our client's charge was fully dismissed and no finding or judgment of guilt was ever entered, we respectfully submit that this matter has no bearing on our client's admissibility to Canada, as it does not meet the inadmissibility criteria laid out in Section 36 of IRPA.</p>`;
+    }
+
+    if (ardFound) {
+      html += `<p ${pStyle}>¶ ${titleLast} was admitted into the pre-trial intervention program Accelerated Rehabilitative Disposition (ARD). This program is exclusively offered to individuals who have no prior criminal history.</p>`;
+      html += `<p ${pStyle}>Given that ${heShe} was accepted into the ARD Program, upon completion of all the terms of ${hisHer} sentence, ${titleLast}'s aforementioned charge became eligible for expungement, per enclosed document supporting the completion of an ARD Program.</p>`;
+      html += `<p ${pStyle}>As indicated in the enclosed documentation, conditional to the completion of the ARD, the case is dismissed without a finding of guilt, with a possibility of expungement available. Therefore, since ${titleLast} completed the terms of ${hisHer} ARD program, this singular charge does not indicate criminality and does not inhibit ${hisHer} admissibility into Canada.</p>`;
+    }
+  }
+
+  for (const c of expungementCharges) {
+    const dateStr   = c.expungementDate
+      ? new Date(c.expungementDate + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+      : '[EXPUNGEMENT DATE]';
+    const statute   = c.expungementStatute || '[STATUTE]';
+    html += `<p ${pStyle}>° On ${dateStr}, our client obtained an expungement of this conviction pursuant to ${statute}. As a result of that order, the matter is deemed never to have occurred, and our client and all criminal justice agencies are entitled to reply to any inquiry regarding the matter by stating that no such action ever took place.</p>`;
+    html += `<p ${pStyle}>IRCC's policy with respect to expungements is set out in Manual ENF 2/OP 18, Section 14.2, which provides that an expungement does not constitute a conviction, defining the term as meaning to strike out, obliterate, mark for deletion, efface completely, or deem never to have occurred.</p>`;
+    html += `<p ${pStyle}>Accordingly, we respectfully submit that, as the conviction has been expunged, it does not constitute an incident to be considered under section 36 of IRPA for the purposes of assessing our client's admissibility to Canada.</p>`;
+  }
+
+  for (const c of charges1203) {
+    const dateStr = c.expungementDate
+      ? new Date(c.expungementDate + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+      : '[EXPUNGEMENT DATE]';
+    const lastName = clientName ? clientName.trim().split(/\s+/).pop() : '[CLIENT NAME]';
+    const firstName = clientName ? clientName.trim().split(/\s+/).slice(0,-1).join(' ') || lastName : '[CLIENT NAME]';
+    const fullName = clientName || '[CLIENT NAME]';
+    html += `<p ${pStyle}>‡ On ${dateStr}, the Superior Court of California granted relief and dismissed this conviction under Section 1203.4 of the California Penal Code. This order resulted in the withdrawal of ${fullName}'s plea of "guilty" and a "not guilty" plea being entered in its place. It is the contention of our office that a dismissal pursuant to Section 1203.4 of the California Penal Code is the equivalent of a record suspension or an expungement under Canadian law due to its similar content, aim, and effect. It follows that, according to IRCC regulations on determining admissibility, specifically ENF/OP18: Evaluating Inadmissibility, an expunged conviction is to be treated as "Not a conviction. Expunged means to strike out; obliterate; mark for deletion; to efface completely; deemed to have never occurred."</p>`;
+    html += `<p ${pStyle}>In Canada, section 36(3)(b) of the Immigration and Refugee Protection Act states that criminal inadmissibility "may not be based on a conviction in respect of which a record suspension has been ordered…". For these reasons, it is the contention of our office that a dismissal under Section 1203.4, equating to a record suspension or expungement, does not affect our client's admissibility to Canada based on criminality.</p>`;
+  }
+
+  return html;
+}
+
+function buildNoRecordsNotes(arrestsArr) {
+  const pStyle = 'class="letter-para" style="font-size:10pt;margin-top:8px;font-style:italic"';
+
+  const purged   = arrestsArr.filter(a => a.noRecords && a.noRecordsReason !== 'untimely');
+  const untimely = arrestsArr.filter(a => a.noRecords && a.noRecordsReason === 'untimely');
+
+  function dateList(arrs) {
+    const dates = arrs.map(a => a.date ? `(${a.date})` : '');
+    if (dates.length === 1) return ` pertaining to the ${dates[0]} arrest`;
+    if (dates.length === 2) return ` pertaining to the ${dates[0]} and ${dates[1]} arrests`;
+    return ` pertaining to the ${dates.slice(0,-1).join(', ')}, and ${dates[dates.length-1]} arrests`;
+  }
+
+  let html = '';
+  if (purged.length)
+    html += `<p ${pStyle}>Please note that court records${dateList(purged)} are not available, as they have been purged.</p>`;
+  if (untimely.length)
+    html += `<p ${pStyle}>Please note that court records${dateList(untimely)} are not available, as the client was unable to obtain them in time for this submission.</p>`;
+  return html;
+}
+
+// ─────────────────────────────────────────────
+//  LIVE PREVIEW — updates as form is filled
+// ─────────────────────────────────────────────
+let _liveDebounce = null;
+function scheduleLivePreview() {
+  clearTimeout(_liveDebounce);
+  _liveDebounce = setTimeout(renderLivePreview, 300);
+}
+
+function renderLivePreview() {
+  // Don't overwrite a fully-generated letter
+  if (window._lastGenerated) return;
+
+  const today = new Date().toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+  const name        = document.getElementById('clientName')?.value   || '';
+  const dob         = document.getElementById('clientDob')?.value    || '';
+  const gender      = document.getElementById('clientGender')?.value || 'mr';
+  const purpose     = document.getElementById('travelPurpose')?.value || '';
+  const entry       = document.getElementById('travelEntryType')?.value || '';
+  const duration    = document.getElementById('travelDuration')?.value || '';
+  const caseManager = document.getElementById('caseManager')?.value  || '';
+
+  const title  = gender === 'ms' ? 'Ms.'  : 'Mr.';
+  const heShe  = gender === 'ms' ? 'she'  : 'he';
+  const hisHer = gender === 'ms' ? 'her'  : 'his';
+  const himHer = gender === 'ms' ? 'her'  : 'him';
+
+  // Rehab / CR fields
+  const rehabStatus    = document.getElementById('rehabStatus')?.value    || 'none';
+  const rehabAORDate   = document.getElementById('rehabAORDate')?.value   || '';
+  const rehabAORNumber = document.getElementById('rehabAORNumber')?.value?.trim() || '';
+
+  // Application mode / POE fields
+  const appType          = document.getElementById('applicationMode')?.value || 'consulate';
+  const poeConsulateCity = document.getElementById('poeConsulateCity')?.value?.trim() || '';
+  const poeSubmissionDate= document.getElementById('poeSubmissionDate')?.value || '';
+  const poeAORNumber     = document.getElementById('poeAORNumber')?.value?.trim() || '';
+
+  const formatMulti = (values) => {
+    const nonEmpty = values.map(v => v || '—');
+    if (nonEmpty.length === 1) return nonEmpty[0];
+    return nonEmpty.map((v, idx) => `${idx+1}. ${v}`).join('<br>');
+  };
+
+  const currentArrests = arrests.map((arr, i) => {
+    const date       = document.getElementById(`arr-date-${i}`)?.value    || '';
+    const countryRaw = document.getElementById(`arr-country-${i}`)?.value || 'United States';
+    const country    = countryRaw === 'other' ? (document.getElementById(`arr-country-custom-${i}`)?.value || '') : countryRaw;
+    const state      = document.getElementById(`arr-state-${i}`)?.value?.trim() || '';
+    const charges = (arr.charges || []).map((c, j) => {
+      const sel = document.getElementById(`arr-${i}-desc-${j}`);
+      const isCustom = sel?.value === '__custom__';
+      const description = isCustom
+        ? (document.getElementById(`arr-${i}-custom-${j}`)?.value || '')
+        : (sel?.value || '');
+      return {
+        description,
+        outcome:        document.getElementById(`arr-${i}-outcome-${j}`)?.value || 'conviction',
+        sentence:       document.getElementById(`arr-${i}-sentence-${j}`)?.value || '',
+        foreignStatute: document.getElementById(`arr-${i}-foreign-${j}`)?.value || '',
+        canadianStatute: document.getElementById(`arr-${i}-equiv-${j}`)?.value || '',
+        canadianEquivalentLabel: arr.charges[j]?.canadianEquivalentLabel || '',
+        irpa:           arr.charges[j]?.irpa || '',
+      };
+    }).filter(c => c.description || ['deferred','diversion','ard_pa','pbj_md','cwof_ma','dismissed_1203_4','expungement'].includes(c.outcome));
+    const noRecords       = document.getElementById(`arr-no-records-${i}`)?.checked || false;
+    const noRecordsReason = document.getElementById(`arr-no-records-reason-${i}`)?.value || 'purged';
+    return { date, country, state, charges, noRecords, noRecordsReason };
+  }).filter(a => a.charges.length > 0 || a.noRecords);
+
+  const allCharges = currentArrests.flatMap(a => a.charges);
+  const isSerious = allCharges.some(c => c.irpa && /36\(1\)/.test(c.irpa));
+  const criminalityLabel = currentArrests.length ? (isSerious ? 'Serious' : 'Non-serious') : '—';
+
+  const e = s => s || '<span class="live-empty-cell">—</span>';
+
+  // Build sentence cell: conditions/sentence text + outcome label with superscript marker
+  const sentLabel = c => {
+    const o = c.outcome;
+    if (o === 'conviction' || o === 'provincial' || o === 'dropped') return chargeOutcomeLabel(c);
+    const markers = { deferred:'*', diversion:'†', dismissed_1203_4:'‡', cwof_ma:'§', ard_pa:'¶', pbj_md:'#', expungement:'°' };
+    const marker  = markers[o] ? `<sup>${markers[o]}</sup>` : '';
+    const label   = chargeOutcomeLabel(c) + marker;
+    const condText = c.programConditions || (o === 'dismissed_1203_4' ? c.sentence : '') || '';
+    return condText ? `${condText}<br>${label}` : label;
+  };
+
+  const offenceRows = currentArrests.length
+    ? currentArrests.map(arr => {
+        const descs    = arr.charges.map(c => c.description);
+        const sents    = arr.charges.map(c => sentLabel(c));
+        const statutes = arr.charges.map(c => c.foreignStatute);
+        const equivs   = arr.charges.map(c => (c.outcome === 'dropped' || c.outcome === 'provincial') ? 'N/A' : (c.canadianEquivalentLabel || c.canadianStatute));
+        return `
+        <tr>
+          <td>${e(arr.date)}</td>
+          <td>${e(formatMulti(descs))}</td>
+          <td>${formatMulti(sents)}</td>
+          <td>${e(formatMulti(statutes))}</td>
+          <td>${e(formatMulti(equivs))}</td>
+        </tr>`;
+      }).join('')
+    : `<tr><td colspan="5" style="text-align:center;color:#ccc;font-style:italic;font-size:12px">No arrests added yet</td></tr>`;
+
+  const placeholder = label => `<div class="live-section-placeholder">✦ ${label} — will be drafted by AI when you click Generate</div>`;
+
+  // Build rehab blurb (mirrors server.js logic)
+  const lastName = name.trim().split(/\s+/).pop() || '[CLIENT]';
+  let rehabBlurb = '';
+  if (rehabStatus === 'applied') {
+    const dateStr = rehabAORDate
+      ? new Date(rehabAORDate + 'T12:00:00').toLocaleDateString('en-CA', { year:'numeric', month:'long', day:'numeric' })
+      : '[DATE]';
+    const fileRef = rehabAORNumber ? ` (${rehabAORNumber})` : '';
+    rehabBlurb = `Please be advised that our client has also retained us for a Criminal Rehabilitation application, which we submitted to the Canadian Consulate's office in New York, as confirmed in the enclosed Acknowledgement of Receipt letter dated ${dateStr}${fileRef}. As current processing time for Criminal Rehabilitation applications is estimated between twelve and eighteen months, ${title} ${lastName} is therefore requesting a Temporary Resident Permit so that ${heShe} may travel to Canada in the meantime.`;
+  } else if (rehabStatus === 'retained') {
+    rehabBlurb = `Please be advised that our client has also retained us for a Criminal Rehabilitation application, which we will be submitting to the Canadian Consulate's office in New York. As current processing times for Criminal Rehabilitation applications are estimated between twelve and eighteen months, ${title} ${lastName} is therefore requesting a Temporary Resident Permit so that ${heShe} may travel to Canada in the meantime.`;
+  }
+
+  // Build POE blurb (mirrors server.js logic)
+  const ENF_BLOCK = `According to Enforcement Manual (ENF) 4: A border services officer at Immigration Secondary has discretion, pursuant to subsection A24(1), to issue a TRP to an inadmissible person seeking entry to Canada if satisfied that entry is justified in the circumstances.\n\nFurthermore, IRCC has confirmed that TRPs can be processed at the ports of entry. Please find an email from IRCC dated March 27, 2017, enclosed herewith.`;
+  let poeBlurb = '';
+  if (appType === 'poe-sole') {
+    poeBlurb = `Please note that current processing times for Temporary Resident Permit applications submitted to the Consulate are advertised at 3-6 months. As there is insufficient time for the Consulate to process it, we respectfully request that you process this application for a Temporary Resident Permit today at the Port of Entry.\n\n${ENF_BLOCK}`;
+  } else if (appType === 'poe-prior-consulate') {
+    const city    = poeConsulateCity  || '[CONSULATE CITY]';
+    const dateStr = poeSubmissionDate
+      ? new Date(poeSubmissionDate + 'T12:00:00').toLocaleDateString('en-CA', { year:'numeric', month:'long', day:'numeric' })
+      : '[DATE]';
+    const aorRef  = poeAORNumber ? `Application Number: ${poeAORNumber}` : 'Application Number: [NUMBER]';
+    poeBlurb = `Please be advised that we have submitted a version of this application to the Canadian Consulate in ${city} on ${dateStr}, as indicated in the enclosed Acknowledgment of Processing Letter (${aorRef}). As we have not yet received a decision on this matter, we respectfully request that you process this application for a Temporary Resident Permit today at the Port of Entry.\n\n${ENF_BLOCK}`;
+  }
+
+  // Standard opening — always present, verbatim, uses correct pronoun
+  const standardOpening = `We represent the above-named individual with respect to ${hisHer} application for a Temporary Resident Permit. An authorization to this effect is enclosed.`;
+
+  // Render intro section: standard opening → POE → rehab → AI placeholder
+  const paraStyle = 'style="margin-bottom:10px"';
+  let introHtml = `<p class="letter-para" ${paraStyle}>${standardOpening}</p>`;
+  if (poeBlurb) {
+    introHtml += poeBlurb.split('\n\n').map(p => `<p class="letter-para" ${paraStyle}>${p.replace(/\n/g,'<br>')}</p>`).join('');
+  }
+  if (rehabBlurb) {
+    introHtml += `<p class="letter-para" ${paraStyle}>${rehabBlurb}</p>`;
+  }
+  introHtml += placeholder('Introduction prose (AI)');
+
+  document.getElementById('previewContent').innerHTML = `
+  <div class="letter-wrap">
+    ${letterFirmHeader()}
+    <div class="letter-date-row" style="margin-top:14px">
+      <span class="letter-date">${today}</span>
+      <span class="letter-without-prejudice">Without Prejudice</span>
+    </div>
+    <div class="letter-submission-note">Montreal</div>
+
+    <table class="letter-header-table">
+      <tr><td>Attention:</td><td>Canadian Immigration Officer</td></tr>
+      <tr><td>RE:</td><td>${formatReField(name, dob)}</td></tr>
+      <tr><td>Subject:</td><td>Application for a Temporary Resident Permit</td></tr>
+      <tr><td>Purpose:</td><td>${e(purpose)}</td></tr>
+      <tr><td>Entry Type:</td><td>${e(entry)}</td></tr>
+      <tr><td>Duration:</td><td>${e(duration)}</td></tr>
+      <tr><td>Criminality:</td><td>${criminalityLabel}</td></tr>
+    </table>
+
+    <p class="letter-para">Dear Sir/Madam,</p>
+
+    ${introHtml}
+
+    <div class="letter-section-header">1. Foreign Offence(s)</div>
+    <table class="letter-table">
+      <thead><tr><th>Date</th><th>Offence</th><th>Sentence</th><th>Foreign Statute</th><th>Canadian Equivalent</th></tr></thead>
+      <tbody>${offenceRows}</tbody>
+    </table>
+    ${buildArrestLegalNotes(currentArrests, name)}
+    ${buildNoRecordsNotes(currentArrests)}
+
+    <div class="letter-section-header">2. Reason for Request</div>
+    ${placeholder('Reason for Request')}
+
+    <div class="letter-section-header">3. Economic Benefit to Canada</div>
+    ${placeholder('Economic Benefit')}
+
+    <div class="letter-section-header">4. Rehabilitation Factors</div>
+    ${placeholder('Rehabilitation Factors')}
+
+    <div class="letter-section-header">5. Conclusion</div>
+    ${placeholder('Conclusion')}
+
+    ${letterSig(caseManager)}
+  </div>`;
+}
+
+function renderPreview(payload, gen) {
+  window._lastGenerated = true; // lock live preview from overwriting
+  const today = new Date().toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+  const c = payload.client, t = payload.travel;
+  const appType = payload.applicationMode?.type || 'consulate';
+  const submissionNote = appType === 'consulate' ? 'Montreal – submitted online' : 'Montreal';
+
+  // Support both old (offences) and new (arrests) payload format
+  const payloadArrests = payload.arrests || (payload.offences || []).map(o => ({
+    date: o.date || '', country: o.country || '',
+    charges: [{ description: o.description || '', outcome: o.outcome || 'conviction',
+                sentence: o.sentence || '', foreignStatute: o.foreignStatute || '',
+                canadianStatute: o.canadianStatute || '',
+                canadianEquivalentLabel: o.canadianEquivalentLabel || '', irpa: o.irpa || '' }],
+  }));
+
+  const allCharges = payloadArrests.flatMap(a => a.charges);
+  const isSerious = allCharges.some(c => c.irpa && /36\(1\)/.test(c.irpa));
+  const criminalityLabel = isSerious ? 'Serious' : 'Non-serious';
+
+  const fmtMulti = (values) => {
+    const nonEmpty = values.map(v => v || '—');
+    if (nonEmpty.length === 1) return nonEmpty[0];
+    return nonEmpty.map((v, idx) => `${idx+1}. ${v}`).join('<br>');
+  };
+
+  const sentLabelPrev = c => {
+    const o = c.outcome;
+    if (o === 'conviction' || o === 'provincial' || o === 'dropped') return chargeOutcomeLabel(c);
+    const markers = { deferred:'*', diversion:'†', dismissed_1203_4:'‡', cwof_ma:'§', ard_pa:'¶', pbj_md:'#', expungement:'°' };
+    const marker  = markers[o] ? `<sup>${markers[o]}</sup>` : '';
+    const label   = chargeOutcomeLabel(c) + marker;
+    const condText = c.programConditions || (o === 'dismissed_1203_4' ? c.sentence : '') || '';
+    return condText ? `${condText}<br>${label}` : label;
+  };
+  const offenceRows = payloadArrests.map(arr => {
+    const descs    = arr.charges.map(c => c.description);
+    const sents    = arr.charges.map(c => sentLabelPrev(c));
+    const statutes = arr.charges.map(c => c.foreignStatute);
+    const equivs   = arr.charges.map(c => (c.outcome === 'dropped' || c.outcome === 'provincial') ? 'N/A' : (c.canadianEquivalentLabel || c.canadianStatute));
+    return `
+    <tr>
+      <td>${arr.date || ''}</td>
+      <td>${fmtMulti(descs)}</td>
+      <td>${fmtMulti(sents)}</td>
+      <td>${fmtMulti(statutes)}</td>
+      <td>${fmtMulti(equivs)}</td>
+    </tr>`;
+  }).join('');
+
+  const footnotes = (gen.economicBenefitFootnotes || [])
+    .map((fn, i) => `<p>[${i+1}] ${fn}</p>`).join('');
+
+  const attachments = collectAttachments().map(a => `<li>${a}</li>`).join('');
+
+  const paras = t => (t||'').split('\n').filter(s=>s.trim()).map(s=>`<p class="letter-para">${s}</p>`).join('');
+
+  document.getElementById('previewContent').innerHTML = `
+  <div class="letter-wrap">
+    ${letterFirmHeader()}
+    <div class="letter-date-row" style="margin-top:14px">
+      <span class="letter-date">${today}</span>
+      <span class="letter-without-prejudice">Without Prejudice</span>
+    </div>
+    <div class="letter-submission-note">Montreal</div>
+
+    <table class="letter-header-table">
+      <tr><td>Attention:</td><td>Canadian Immigration Officer</td></tr>
+      <tr><td>RE:</td><td>${formatReField(c.name, c.dob)}</td></tr>
+      <tr><td>Subject:</td><td>Application for a Temporary Resident Permit</td></tr>
+      <tr><td>Purpose:</td><td>${t.purpose||''}</td></tr>
+      <tr><td>Entry Type:</td><td>${t.entryType||''}</td></tr>
+      <tr><td>Duration:</td><td>${t.duration||''}</td></tr>
+      <tr><td>Criminality:</td><td>${criminalityLabel}</td></tr>
+    </table>
+
+    <p class="letter-para">Dear Sir/Madam,</p>
+
+    ${gen.standardOpening ? `<p class="letter-para">${gen.standardOpening}</p>` : ''}
+    ${gen.poeParagraph   ? renderPOEBlock(gen.poeParagraph)                    : ''}
+    ${gen.rehabParagraph ? `<p class="letter-para">${gen.rehabParagraph}</p>`  : ''}
+    ${paras(gen.introduction)}
+
+    <div class="letter-section-header">1. Foreign Offence(s)</div>
+    <table class="letter-table">
+      <thead><tr><th>Date</th><th>Offence</th><th>Sentence</th><th>Foreign Statute</th><th>Canadian Equivalent</th></tr></thead>
+      <tbody>${offenceRows}</tbody>
+    </table>
+    ${buildArrestLegalNotes(payloadArrests, c.name)}
+    ${buildNoRecordsNotes(payloadArrests)}
+
+    <div class="letter-section-header">2. Reason for Request</div>
+    ${paras(gen.reasonForRequest)}
+
+    <div class="letter-section-header">3. Economic Benefit to Canada</div>
+    ${paras(gen.economicBenefit)}
+
+    <div class="letter-section-header">4. Rehabilitation Factors</div>
+    ${paras(gen.rehabilitationFactors)}
+
+    <div class="letter-section-header">5. Conclusion</div>
+    ${paras(gen.conclusion)}
+
+    <div class="letter-section-header" style="margin-top:22px">Attachments:</div>
+    <div class="letter-attachments">
+      <p class="letter-para"><strong>A. Supporting Documents:</strong></p>
+      <ul>${attachments || '<li>Personal statement of the applicant</li>'}</ul>
+    </div>
+
+    ${letterSig(c.caseManager)}
+
+    ${footnotes ? `<div class="letter-footnotes"><strong>Sources:</strong>${footnotes}</div>` : ''}
+  </div>`;
+}
+
+// ─────────────────────────────────────────────
+//  EDIT PANE
+// ─────────────────────────────────────────────
+function renderEditPane(gen) {
+  const sections = [
+    ...(gen.poeParagraph ? [{ key: 'poeParagraph', label: '§ Applying at the Port of Entry' }] : []),
+    { key: 'introduction',            label: 'Introduction' },
+    { key: 'reasonForRequest',        label: 'Reason for Request' },
+    { key: 'economicBenefit',         label: 'Economic Benefit' },
+    { key: 'rehabilitationFactors',   label: 'Rehabilitation Factors' },
+    { key: 'conclusion',              label: 'Conclusion' },
+    { key: 'offenceSummaryForHeader', label: 'Header — Offence Summary (one line)' },
+  ];
+  document.getElementById('editPaneInner').innerHTML = `
+    <p style="font-size:12px;color:var(--muted);margin-bottom:14px">Edit any section, then click <strong style="color:var(--accent)">Update Preview</strong>.</p>
+    ${sections.map(s => `
+      <div class="section-edit-block">
+        <label>${s.label}</label>
+        <textarea id="edit-${s.key}" rows="${s.key==='offenceSummaryForHeader'?2:6}">${gen[s.key]||''}</textarea>
+      </div>`).join('')}
+    <button class="btn btn-gold" onclick="applyEdits()" style="width:100%;margin-top:6px">Update Preview</button>
+  `;
+}
+
+function applyEdits() {
+  if (!generated) return;
+  ['poeParagraph','introduction','reasonForRequest','economicBenefit','rehabilitationFactors','conclusion','offenceSummaryForHeader']
+    .forEach(k => { const el = document.getElementById(`edit-${k}`); if (el) generated[k] = el.value; });
+  renderPreview(window._lastPayload, generated);
+  switchTab('preview');
+  // If the letter has already been saved, update it automatically
+  if (window._currentSavedId && window._currentSavedPayload) {
+    saveLetterToStorage(window._currentSavedPayload, generated, window._currentSavedId)
+      .then(id => { window._currentSavedId = id; });
+    setStatus('Preview updated and saved.', 'ok');
+  } else {
+    setStatus('Preview updated.', 'ok');
+  }
+}
+
+function manualSaveLetter() {
+  if (!generated || !window._currentSavedPayload) return;
+  saveLetterToStorage(window._currentSavedPayload, generated, window._currentSavedId)
+    .then(id => { window._currentSavedId = id; });
+  setStatus('Letter saved to Saved Letters.', 'ok');
+  const btn = document.getElementById('saveLetterBtn');
+  if (btn) { btn.textContent = '✓ Saved'; setTimeout(() => { btn.textContent = '💾 Save Letter'; }, 2000); }
+}
+
+// ─────────────────────────────────────────────
+//  TABS
+// ─────────────────────────────────────────────
+function switchTab(name) {
+  document.querySelectorAll('.preview-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.toggle('active', p.id === `tab-${name}`));
+}
+
+// ─────────────────────────────────────────────
+//  DOWNLOAD DOCX
+// ─────────────────────────────────────────────
+async function downloadDocx() {
+  if (!generated || !window._lastPayload) return;
+  setStatus('Building .docx…', 'info');
+  try {
+    const r = await fetch('/api/download-docx', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        client:          window._lastPayload.client,
+        travel:          window._lastPayload.travel,
+        arrests:         window._lastPayload.arrests,
+        applicationMode: window._lastPayload.applicationMode,
+        generated,
+        attachments: collectAttachments(),
+      }),
+    });
+    if (!r.ok) { const e = await r.json(); throw new Error(e.error||'Download failed'); }
+    const blob = await r.blob();
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href = url;
+    a.download = `TRP_${(window._lastPayload.client.name||'Client').replace(/\s+/g,'_')}_${new Date().toISOString().slice(0,10)}.docx`;
+    a.click();
+    URL.revokeObjectURL(url);
+    setStatus('Downloaded successfully.', 'ok');
+  } catch (err) {
+    setStatus('Download error: ' + err.message, 'err');
+  }
+}
+
+// ─────────────────────────────────────────────
+//  STATUS
+// ─────────────────────────────────────────────
+function setStatus(msg, type='') {
+  const el = document.getElementById('statusBar');
+  el.textContent = msg;
+  el.className = 'status-bar ' + type;
+}
+
+// ─────────────────────────────────────────────
+//  MAIN TAB SWITCHING
+// ─────────────────────────────────────────────
+function switchMainTab(name) {
+  document.querySelectorAll('.main-tab').forEach(t =>
+    t.classList.toggle('active', t.dataset.tab === name));
+  document.getElementById('main-tab-generator').style.display = name === 'generator' ? '' : 'none';
+  document.getElementById('main-tab-saved').style.display     = name === 'saved'     ? '' : 'none';
+  if (name === 'saved') renderSavedLetters();
+}
+
+// ─────────────────────────────────────────────
+//  SAVED LETTERS — Supabase persistence
+// ─────────────────────────────────────────────
+let _cachedLetters = [];
+
+async function _refreshLetters() {
+  try {
+    const r = await fetch('/api/letters');
+    if (!r.ok) throw new Error(await r.text());
+    _cachedLetters = await r.json();
+    // normalise snake_case keys from DB to camelCase
+    _cachedLetters = _cachedLetters.map(_dbRowToEntry);
+  } catch (e) {
+    console.error('Failed to load letters:', e);
+  }
+}
+
+function _dbRowToEntry(row) {
+  return {
+    id:             row.id,
+    savedAt:        row.saved_at,
+    caseManager:    row.case_manager,
+    clientName:     row.client_name,
+    clientDob:      row.client_dob,
+    offenceSummary: row.offence_summary,
+    travelPurpose:  row.travel_purpose,
+    entryType:      row.entry_type,
+    dateFrom:       row.date_from,
+    dateTo:         row.date_to,
+    payload:        row.payload,
+    generated:      row.generated,
+  };
+}
+
+function updateSavedBadge() {
+  const badge = document.getElementById('savedCountBadge');
+  if (!badge) return;
+  const count = _cachedLetters.length;
+  badge.textContent   = count;
+  badge.style.display = count > 0 ? '' : 'none';
+}
+
+const CM_NAMES = ['Dimitra','Sarah','Diane','Sophie','Shealeigh'];
+
+async function saveLetterToStorage(payload, gen, existingId = null) {
+  const id = existingId || Date.now().toString();
+  const entry = {
+    id,
+    savedAt:        new Date().toISOString(),
+    caseManager:    document.getElementById('caseManager')?.value || '',
+    clientName:     payload.client.name || 'Unknown Client',
+    clientDob:      payload.client.dob  || '',
+    offenceSummary: gen.offenceSummaryForHeader || '',
+    travelPurpose:  payload.travel.purpose   || '',
+    entryType:      payload.travel.entryType || '',
+    dateFrom:       payload.travel.dateFrom  || '',
+    dateTo:         payload.travel.dateTo    || '',
+    payload:        JSON.parse(JSON.stringify(payload)),
+    generated:      JSON.parse(JSON.stringify(gen)),
+  };
+  try {
+    const r = await fetch('/api/letters', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(entry),
+    });
+    if (!r.ok) throw new Error(await r.text());
+  } catch (e) {
+    console.error('Failed to save letter:', e);
+  }
+  // update cache locally so the UI reflects the change without another round-trip
+  const idx = _cachedLetters.findIndex(l => l.id === id);
+  if (idx >= 0) _cachedLetters[idx] = entry; else _cachedLetters.unshift(entry);
+  updateSavedBadge();
+  return id;
+}
+
+let _activeCMFolder = 'All';
+
+function renderCMFolderTabs() {
+  const all    = _cachedLetters;
+  const counts = { All: all.length };
+  CM_NAMES.forEach(cm => { counts[cm] = all.filter(l => l.caseManager === cm).length; });
+
+  const tabs = document.getElementById('cmFolderTabs');
+  if (!tabs) return;
+  tabs.innerHTML = ['All', ...CM_NAMES].map(cm => {
+    const count = counts[cm] || 0;
+    const icon  = cm === 'All' ? '📁' : '👤';
+    return `<button class="cm-folder-tab${_activeCMFolder === cm ? ' active' : ''}"
+      onclick="selectCMFolder('${cm}')">
+      ${icon} ${cm} <span class="cm-tab-count">${count}</span>
+    </button>`;
+  }).join('');
+}
+
+function selectCMFolder(cm) {
+  _activeCMFolder = cm;
+  renderCMFolderTabs();
+  filterSavedLetters();
+}
+
+async function renderSavedLetters(textFilter = '') {
+  await _refreshLetters();
+  renderCMFolderTabs();
+  const all      = _cachedLetters;
+
+  let filtered = _activeCMFolder === 'All'
+    ? all
+    : all.filter(l => l.caseManager === _activeCMFolder);
+
+  if (textFilter)
+    filtered = filtered.filter(l => l.clientName.toLowerCase().includes(textFilter.toLowerCase()));
+
+  const countEl = document.getElementById('savedTotalCount');
+  if (countEl) countEl.textContent =
+    `${filtered.length} letter${filtered.length !== 1 ? 's' : ''}${_activeCMFolder !== 'All' ? ` — ${_activeCMFolder}'s folder` : ' saved'}`;
+
+  const list = document.getElementById('savedLettersList');
+  if (!filtered.length) {
+    list.innerHTML = `
+      <div class="saved-empty">
+        <div class="saved-empty-icon">📭</div>
+        <div class="saved-empty-title">${textFilter || _activeCMFolder !== 'All' ? 'No letters here yet.' : 'No saved letters yet.'}</div>
+        <div class="saved-empty-sub">${_activeCMFolder !== 'All' ? `Letters generated under ${_activeCMFolder}'s name will appear here.` : 'Generate a letter and it will appear here automatically.'}</div>
+      </div>`;
+    return;
+  }
+
+  // Group by month/year
+  const groups = {};
+  filtered.forEach(l => {
+    const key = new Date(l.savedAt).toLocaleDateString('en-CA', { year:'numeric', month:'long' });
+    (groups[key] = groups[key] || []).push(l);
+  });
+
+  list.innerHTML = Object.entries(groups).map(([month, items]) => `
+    <div class="saved-group-label">${month}</div>
+    ${items.map(savedCardHTML).join('')}
+  `).join('');
+}
+
+function savedCardHTML(l) {
+  const esc  = s => (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const when = new Date(l.savedAt).toLocaleDateString('en-CA',
+    { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+  const dateRange = l.dateFrom && l.dateTo
+    ? `<span style="color:var(--muted);font-size:11px">✈ ${l.dateFrom} → ${l.dateTo}</span>` : '';
+  return `
+  <div class="saved-card">
+    <div class="saved-card-body">
+      <div class="saved-card-name">${esc(l.clientName)}</div>
+      <div class="saved-card-meta">
+        ${l.caseManager   ? `<span class="saved-chip" style="background:#f0e8ff;color:#6b21a8;border-color:#d8b4fe">👤 ${esc(l.caseManager)}</span>` : ''}
+        ${l.entryType     ? `<span class="saved-chip">${esc(l.entryType)}</span>` : ''}
+        ${l.travelPurpose ? `<span class="saved-chip">${esc(l.travelPurpose)}</span>` : ''}
+        ${dateRange}
+      </div>
+      ${l.offenceSummary ? `<div class="saved-card-offence">${esc(l.offenceSummary)}</div>` : ''}
+      <div class="saved-card-date">Saved ${when}</div>
+    </div>
+    <div class="saved-card-actions">
+      <button class="btn btn-outline btn-sm" onclick="loadSavedLetter('${l.id}')">✏️ Load & Edit</button>
+      <button class="btn btn-gold btn-sm"    onclick="redownloadSaved('${l.id}')">⬇ Download</button>
+      <button class="saved-del-btn"          onclick="deleteSavedLetter('${l.id}')">✕ Delete</button>
+    </div>
+  </div>`;
+}
+
+function filterSavedLetters() {
+  renderSavedLetters(document.getElementById('savedSearch')?.value || '');
+}
+
+async function deleteSavedLetter(id) {
+  if (!confirm('Delete this saved letter?')) return;
+  try {
+    const r = await fetch(`/api/letters/${id}`, { method: 'DELETE' });
+    if (!r.ok) throw new Error(await r.text());
+  } catch (e) {
+    console.error('Failed to delete letter:', e);
+  }
+  _cachedLetters = _cachedLetters.filter(l => l.id !== id);
+  updateSavedBadge();
+  filterSavedLetters();
+}
+
+async function redownloadSaved(id) {
+  const letter = _cachedLetters.find(l => l.id === id);
+  if (!letter) return;
+  setStatus('Building .docx…', 'info');
+  try {
+    const r = await fetch('/api/download-docx', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        client:          letter.payload.client,
+        travel:          letter.payload.travel,
+        arrests:         letter.payload.arrests,
+        offences:        letter.payload.offences, // backward compat for old saves
+        applicationMode: letter.payload.applicationMode,
+        generated:       letter.generated,
+        attachments:     letter.payload.attachments || [],
+      }),
+    });
+    if (!r.ok) { const e = await r.json(); throw new Error(e.error || 'Download failed'); }
+    const blob = await r.blob();
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href     = url;
+    a.download = `TRP_${(letter.clientName).replace(/\s+/g,'_')}_${new Date(letter.savedAt).toISOString().slice(0,10)}.docx`;
+    a.click();
+    URL.revokeObjectURL(url);
+    setStatus('Downloaded.', 'ok');
+  } catch (err) {
+    setStatus('Download error: ' + err.message, 'err');
+  }
+}
+
+function loadSavedLetter(id) {
+  const letter = _cachedLetters.find(l => l.id === id);
+  if (!letter) return;
+  const p = letter.payload;
+  const g = letter.generated;
+
+  // Client
+  document.getElementById('clientName').value        = p.client.name        || '';
+  document.getElementById('clientDob').value         = p.client.dob         || '';
+  document.getElementById('clientNationality').value = p.client.nationality || '';
+  const genderEl = document.getElementById('clientGender');
+  if (genderEl) genderEl.value = p.client.gender || 'mr';
+  const cmEl = document.getElementById('caseManager');
+  if (cmEl) cmEl.value = letter.caseManager || '';
+
+  // Travel
+  document.getElementById('travelPurpose').value   = p.travel.purpose    || '';
+  document.getElementById('travelEntryType').value = p.travel.entryType  || '';
+  document.getElementById('travelDateFrom').value  = p.travel.dateFrom   || '';
+  document.getElementById('travelDateTo').value    = p.travel.dateTo     || '';
+  document.getElementById('travelDuration').value  = p.travel.duration   || '';
+  // (travelPort field removed in arrests model)
+  document.getElementById('travelLocations').value = p.travel.locations  || '';
+
+  // Arrests — repopulate global array with backward compat for old offences format
+  const savedArrests = p.arrests || (p.offences || []).map(o => ({
+    date:    o.date    || '',
+    country: o.country || 'United States',
+    state:   o.state   || '',
+    noRecords:       o.noRecords       || false,
+    noRecordsReason: o.noRecordsReason || 'purged',
+    charges: [{
+      description:           o.description           || '',
+      outcome:               o.outcome               || 'conviction',
+      sentence:              o.sentence              || '',
+      programConditions:     '',
+      programCompletionDate: o.sentenceCompletionDate || '',
+      expungementDate:       o.expungementDate        || '',
+      foreignStatute:        o.foreignStatute         || '',
+      canadianStatute:       o.canadianStatute        || '',
+      canadianEquivalentLabel: o.canadianEquivalentLabel || '',
+      maxPunishment:         o.maxPunishment          || '',
+      irpa:                  o.irpa                   || '',
+    }],
+  }));
+  arrests.length = 0;
+  savedArrests.forEach(a => arrests.push(a));
+  renderArrests();
+
+  // Text areas
+  const tsEl = document.getElementById('travelStatement');
+  if (tsEl) tsEl.value = p.travelStatement || '';
+  const rehEl = document.getElementById('rehabSummary');
+  if (rehEl) rehEl.value = p.rehabilitation?.summary || '';
+  const rsEl = document.getElementById('rehabStatus');
+  if (rsEl) { rsEl.value = p.rehabilitation?.rehabStatus || 'none'; handleRehabStatusChange(); }
+  const raEl = document.getElementById('rehabAORDate');
+  if (raEl) raEl.value = p.rehabilitation?.rehabAORDate || '';
+  const rnEl = document.getElementById('rehabAORNumber');
+  if (rnEl) rnEl.value = p.rehabilitation?.rehabAORNumber || '';
+
+  // Attachments
+  const attList = document.getElementById('attachmentList');
+  if (attList) attList.innerHTML = '';
+  (p.attachments || []).forEach(a => addAttachment(a));
+
+  // Generated content
+  generated          = g;
+  window._lastPayload = { ...p }; // restore full payload
+  window._currentSavedId      = letter.id;
+  window._currentSavedPayload = { ...p };
+
+  // Render preview + edit pane
+  renderPreview(p, g);
+  renderEditPane(g);
+  document.getElementById('downloadBtn').style.display    = '';
+  document.getElementById('saveLetterBtn').style.display  = '';
+  document.getElementById('previewTabs').style.display    = 'flex';
+  document.getElementById('previewPanel').style.display   = '';
+  document.querySelector('.layout').classList.add('preview-open');
+  switchTab('preview');
+
+  // Switch back to generator
+  switchMainTab('generator');
+  setStatus(`Loaded: ${letter.clientName} — make edits then re-download.`, 'ok');
+}
+
+// ─────────────────────────────────────────────
+//  DRAG AND DROP — wires up any upload area
+// ─────────────────────────────────────────────
+function setupDragDrop(areaId, inputId, handlerFn) {
+  const area = document.getElementById(areaId);
+  if (!area) return;
+
+  area.addEventListener('dragover', e => {
+    e.preventDefault();
+    area.classList.add('drag-over');
+  });
+  area.addEventListener('dragleave', e => {
+    // only remove if leaving the area itself, not a child
+    if (!area.contains(e.relatedTarget)) area.classList.remove('drag-over');
+  });
+  area.addEventListener('drop', e => {
+    e.preventDefault();
+    area.classList.remove('drag-over');
+    const files = e.dataTransfer.files;
+    if (!files.length) return;
+    // Inject all dropped files into the hidden input and fire the handler
+    const input = document.getElementById(inputId);
+    if (!input) return;
+    const dt = new DataTransfer();
+    Array.from(files).forEach(f => dt.items.add(f));
+    input.files = dt.files;
+    handlerFn(input);
+  });
+}
+
+// ─────────────────────────────────────────────
+//  TEXT FILE UPLOAD (travel statement / rehab)
+// ─────────────────────────────────────────────
+async function handleTextUpload(input, targetTextareaId, statusId) {
+  const files = Array.from(input.files || []);
+  if (!files.length) return;
+
+  const statusEl = document.getElementById(statusId);
+  const textarea = document.getElementById(targetTextareaId);
+  const isMulti  = files.length > 1;
+
+  if (statusEl) statusEl.innerHTML =
+    `<span style="color:var(--muted)">⏳ Extracting ${files.length} file${isMulti ? 's' : ''}…</span>`;
+  setStatus(`Extracting ${files.length} file(s)…`, 'info');
+
+  const results = [];
+
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    if (isMulti && statusEl) statusEl.innerHTML =
+      `<span style="color:var(--muted)">⏳ Processing ${i + 1} of ${files.length}: "${file.name}"…</span>`;
+
+    const formData = new FormData();
+    formData.append('file', file);
+    try {
+      const r    = await fetch('/api/extract-text', { method: 'POST', body: formData });
+      const data = await r.json();
+      if (data.error) throw new Error(data.error);
+      results.push({ name: file.name, text: data.text, error: null });
+    } catch (err) {
+      results.push({ name: file.name, text: '', error: err.message });
+    }
+  }
+
+  // Combine texts — use file name as divider when multiple
+  const combined = results
+    .filter(r => r.text)
+    .map(r => isMulti ? `--- ${r.name} ---\n${r.text}` : r.text)
+    .join('\n\n');
+
+  const failed = results.filter(r => r.error);
+
+  if (textarea && combined) {
+    // Append to existing content so multiple upload rounds accumulate
+    const existing = textarea.value.trim();
+    textarea.value = existing ? `${existing}\n\n${combined}` : combined;
+    textarea.style.height = 'auto';
+    textarea.style.height = Math.min(textarea.scrollHeight, 320) + 'px';
+  }
+
+  const ok = results.filter(r => !r.error);
+  const lines = [`<span style="color:var(--green)">✓ ${ok.length} file(s) loaded</span>`];
+  if (failed.length) lines.push(
+    `<span style="color:var(--red)">✗ failed: ${failed.map(f => f.name).join(', ')}</span>`
+  );
+  if (statusEl) statusEl.innerHTML = lines.join(' &nbsp;·&nbsp; ');
+  setStatus(ok.length ? `${ok.length} file(s) extracted.` : 'All files failed.', ok.length ? 'ok' : 'err');
+}
+
+// ─────────────────────────────────────────────
+//  INIT
+// ─────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  initAttachments();
+  addArrest();
+  _refreshLetters().then(() => { updateSavedBadge(); renderCMFolderTabs(); });
+
+  // Wire up drag-and-drop for all three upload areas
+  setupDragDrop('pdfDropArea', 'pdfUpload', handlePDFUpload);
+  setupDragDrop('stmtUploadBtn',      'stmtUpload',      inp => handleTextUpload(inp, 'travelStatement', 'stmtFileStatus'));
+  setupDragDrop('travelDocsUploadBtn','travelDocsUpload', inp => handleTextUpload(inp, 'travelStatement', 'travelDocsStatus'));
+  setupDragDrop('rehabUploadBtn',   'rehabUpload', inp => handleTextUpload(inp, 'rehabSummary', 'rehabFileStatus'));
+  setupDragDrop('refsUploadBtn',    'refsUpload',  inp => handleTextUpload(inp, 'rehabSummary', 'refsFileStatus'));
+
+  // ── Live preview: listen to all client/travel/rehab/mode inputs
+  const liveIds = [
+    'clientName','clientDob','clientNationality','clientGender',
+    'travelPurpose','travelEntryType','travelDateFrom','travelDateTo','travelDuration','travelLocations',
+    'rehabStatus','rehabAORDate','rehabAORNumber',
+    'applicationMode','poeConsulateCity','poeSubmissionDate','poeAORNumber',
+    'caseManager',
+  ];
+  liveIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', scheduleLivePreview);
+    if (el) el.addEventListener('change', scheduleLivePreview);
+  });
+  // Also listen to app-mode radio buttons
+  document.querySelectorAll('input[name="appMode"]').forEach(r => r.addEventListener('change', scheduleLivePreview));
+
+  // Initial render
+  renderLivePreview();
+});
+</script>
+</body>
+</html>
