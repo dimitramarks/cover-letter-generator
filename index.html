@@ -886,17 +886,6 @@
     line-height: 1.7;
   }
 
-  /* ── Raccoon sack bob animation ── */
-  @keyframes sack-bob {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25%      { transform: translate(0, -3px) rotate(3deg); }
-    75%      { transform: translate(0, -1px) rotate(-2deg); }
-  }
-  #raccoon-sack-arm {
-    animation: sack-bob 3s ease-in-out infinite;
-    transform-origin: 50% 100%;
-    transform-box: fill-box;
-  }
 </style>
 </head>
 <body>
@@ -979,21 +968,9 @@
     <path d="M30 100 Q18 112 16 124" stroke="#6a7278" stroke-width="8" stroke-linecap="round" fill="none"/>
     <ellipse cx="15" cy="126" rx="5.5" ry="5" fill="#7a8086"/>
 
-    <!-- ── RIGHT ARM + MONEY SACK (bobs gently) ── -->
-    <g id="raccoon-sack-arm">
-      <!-- Arm raised up-right -->
-      <path d="M76 96 Q90 82 98 70" stroke="#6a7278" stroke-width="8" stroke-linecap="round" fill="none"/>
-      <!-- Hand -->
-      <ellipse cx="100" cy="68" rx="6" ry="5.5" fill="#7a8086"/>
-      <!-- Sack body -->
-      <ellipse cx="114" cy="58" rx="13" ry="14" fill="#8B6914"/>
-      <!-- Sack tie / knot -->
-      <ellipse cx="114" cy="44" rx="5" ry="3.5" fill="#6B5010"/>
-      <path d="M109 44 Q114 40 119 44" stroke="#6B5010" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <!-- $ sign -->
-      <text x="114" y="63" text-anchor="middle" font-size="13" font-weight="bold"
-            fill="#F5D060" font-family="Arial, sans-serif">$</text>
-    </g>
+    <!-- ── RIGHT ARM down ── -->
+    <path d="M76 100 Q88 112 90 124" stroke="#6a7278" stroke-width="8" stroke-linecap="round" fill="none"/>
+    <ellipse cx="91" cy="126" rx="5.5" ry="5" fill="#7a8086"/>
 
   </svg>
 
