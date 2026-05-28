@@ -3171,7 +3171,6 @@ async function renderSavedLetters(textFilter = '') {
   if (countEl) countEl.textContent =
     `${filtered.length} letter${filtered.length !== 1 ? 's' : ''}${_activeCMFolder !== 'All' ? ` — ${_activeCMFolder}'s folder` : ' saved'}`;
 
-  const list = document.getElementById('savedLettersList');
   if (!filtered.length) {
     list.innerHTML = `
       <div class="saved-empty">
