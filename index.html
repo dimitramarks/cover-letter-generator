@@ -886,55 +886,15 @@
     line-height: 1.7;
   }
 
-  /* ── Raccoon shooting animation ── */
-  @keyframes gun-recoil {
-    0%, 96%    { transform: translate(0, 0) rotate(0deg); }
-    96.5%      { transform: translate(-4px, -7px) rotate(-8deg); }
-    97%        { transform: translate(-2px, -4px) rotate(-4deg); }
-    97.5%      { transform: translate(-4px, -7px) rotate(-8deg); }
-    98%        { transform: translate(0, 0) rotate(0deg); }
-    100%       { transform: translate(0, 0) rotate(0deg); }
+  /* ── Raccoon sack bob animation ── */
+  @keyframes sack-bob {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25%      { transform: translate(0, -3px) rotate(3deg); }
+    75%      { transform: translate(0, -1px) rotate(-2deg); }
   }
-  @keyframes muzzle-flash {
-    0%, 96%    { opacity: 0; transform: scale(0); }
-    96.4%      { opacity: 1; transform: scale(1.4); }
-    96.8%      { opacity: 0; transform: scale(0.6); }
-    97.2%      { opacity: 1; transform: scale(1.1); }
-    97.5%      { opacity: 0; transform: scale(0); }
-    100%       { opacity: 0; transform: scale(0); }
-  }
-  @keyframes bang-text {
-    0%, 95.8%  { opacity: 0; transform: scale(0.4) rotate(-10deg); }
-    96.3%      { opacity: 1; transform: scale(1.2) rotate(-10deg); }
-    97.2%      { opacity: 1; transform: scale(1) rotate(-10deg); }
-    97.8%      { opacity: 0; transform: scale(0.8) rotate(-10deg); }
-    100%       { opacity: 0; }
-  }
-  @keyframes body-jolt {
-    0%, 96%    { transform: translate(0, 0); }
-    96.5%      { transform: translate(2px, 0); }
-    97%        { transform: translate(0, 0); }
-    97.5%      { transform: translate(1px, 0); }
-    98%        { transform: translate(0, 0); }
-    100%       { transform: translate(0, 0); }
-  }
-  #raccoon-gun-arm {
-    animation: gun-recoil 10s infinite;
-    transform-origin: 0% 100%;
-    transform-box: fill-box;
-  }
-  #raccoon-body-group {
-    animation: body-jolt 10s infinite;
-    transform-box: fill-box;
-  }
-  #muzzle-flash-group {
-    animation: muzzle-flash 10s infinite;
-    transform-origin: center;
-    transform-box: fill-box;
-  }
-  #bang-group {
-    animation: bang-text 10s infinite;
-    transform-origin: center;
+  #raccoon-sack-arm {
+    animation: sack-bob 3s ease-in-out infinite;
+    transform-origin: 50% 100%;
     transform-box: fill-box;
   }
 </style>
@@ -1007,8 +967,8 @@
     <!-- ── NECK (connects head to body) ── -->
     <rect x="43" y="76" width="20" height="16" rx="4" fill="#8a9096"/>
 
-    <!-- ── BODY GROUP (jolts on recoil) ── -->
-    <g id="raccoon-body-group">
+    <!-- ── BODY ── -->
+    <g>
       <!-- ── BODY ── -->
       <ellipse cx="53" cy="110" rx="26" ry="22" fill="#848c92"/>
       <!-- Belly -->
@@ -1019,48 +979,20 @@
     <path d="M30 100 Q18 112 16 124" stroke="#6a7278" stroke-width="8" stroke-linecap="round" fill="none"/>
     <ellipse cx="15" cy="126" rx="5.5" ry="5" fill="#7a8086"/>
 
-    <!-- ── RIGHT ARM + GUN GROUP (recoils on fire) ── -->
-    <g id="raccoon-gun-arm">
-      <!-- Arm -->
-      <path d="M76 96 Q92 90 100 86" stroke="#6a7278" stroke-width="8" stroke-linecap="round" fill="none"/>
+    <!-- ── RIGHT ARM + MONEY SACK (bobs gently) ── -->
+    <g id="raccoon-sack-arm">
+      <!-- Arm raised up-right -->
+      <path d="M76 96 Q90 82 98 70" stroke="#6a7278" stroke-width="8" stroke-linecap="round" fill="none"/>
       <!-- Hand -->
-      <ellipse cx="102" cy="84" rx="6" ry="5.5" fill="#7a8086"/>
-      <!-- Grip / handle (vertical) -->
-      <rect x="97" y="84" width="11" height="18" rx="3" fill="#222428"/>
-      <!-- Grip texture -->
-      <line x1="99" y1="88"  x2="106" y2="88"  stroke="#3a3c44" stroke-width="1"/>
-      <line x1="99" y1="91"  x2="106" y2="91"  stroke="#3a3c44" stroke-width="1"/>
-      <line x1="99" y1="94"  x2="106" y2="94"  stroke="#3a3c44" stroke-width="1"/>
-      <!-- Trigger guard -->
-      <path d="M98 84 Q93 92 98 99 Q103 99 108 84" stroke="#1e2028" stroke-width="1.8" fill="none"/>
-      <!-- Trigger -->
-      <line x1="101" y1="86" x2="99" y2="93" stroke="#888" stroke-width="1.5" stroke-linecap="round"/>
-      <!-- Main slide / body of gun -->
-      <rect x="100" y="72" width="36" height="13" rx="3" fill="#2a2c32"/>
-      <!-- Slide highlight -->
-      <rect x="102" y="74" width="28" height="5" rx="2" fill="#3a3c44"/>
-      <!-- Barrel -->
-      <rect x="133" y="74" width="16" height="9" rx="2" fill="#1e2028"/>
-      <!-- Muzzle tip -->
-      <rect x="147" y="73" width="5" height="11" rx="1.5" fill="#12141a"/>
-      <!-- Front sight -->
-      <rect x="144" y="71" width="3" height="3" rx="1" fill="#555"/>
-      <!-- Rear sight -->
-      <rect x="102" y="71" width="4" height="3" rx="1" fill="#555"/>
-    </g>
-
-    <!-- ── MUZZLE FLASH (at barrel tip ~x=155 y=78) ── -->
-    <g id="muzzle-flash-group">
-      <polygon points="155,72 158,67 161,72 167,70 163,76 169,79 163,82 167,88 161,84 158,89 155,84 149,86 153,79 149,72"
-               fill="#ffaa00" opacity="0.95"/>
-      <ellipse cx="158" cy="79" rx="6" ry="5" fill="#fff7aa"/>
-    </g>
-
-    <!-- ── BANG TEXT ── -->
-    <g id="bang-group">
-      <text x="158" y="62" font-family="Impact, Arial Black, sans-serif" font-size="14"
-            font-weight="bold" fill="#ff2200" stroke="#fff" stroke-width="2"
-            paint-order="stroke" text-anchor="middle">BANG!</text>
+      <ellipse cx="100" cy="68" rx="6" ry="5.5" fill="#7a8086"/>
+      <!-- Sack body -->
+      <ellipse cx="114" cy="58" rx="13" ry="14" fill="#8B6914"/>
+      <!-- Sack tie / knot -->
+      <ellipse cx="114" cy="44" rx="5" ry="3.5" fill="#6B5010"/>
+      <path d="M109 44 Q114 40 119 44" stroke="#6B5010" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- $ sign -->
+      <text x="114" y="63" text-anchor="middle" font-size="13" font-weight="bold"
+            fill="#F5D060" font-family="Arial, sans-serif">$</text>
     </g>
 
   </svg>
@@ -2521,10 +2453,8 @@ async function generateLetter() {
     document.getElementById('saveLetterBtn').style.display = '';
     document.getElementById('previewTabs').style.display  = 'flex';
     switchTab('preview');
-    setStatus('Letter generated. Review and save when ready.', 'ok');
-
-    // Track session so re-generate upserts instead of duplicating
     window._currentSavedPayload = { ...payload, attachments: collectAttachments() };
+    window._currentSavedId = await saveLetterToStorage(window._currentSavedPayload, data, window._currentSavedId);
   } catch (err) {
     document.getElementById('previewContent').innerHTML =
       `<div class="preview-placeholder"><p style="color:var(--red)">Error: ${err.message}</p></div>`;
@@ -3137,11 +3067,10 @@ async function _refreshLetters() {
   try {
     const r = await fetch('/api/letters');
     if (!r.ok) throw new Error(await r.text());
-    _cachedLetters = await r.json();
-    // normalise snake_case keys from DB to camelCase
-    _cachedLetters = _cachedLetters.map(_dbRowToEntry);
+    _cachedLetters = (await r.json()).map(_dbRowToEntry);
   } catch (e) {
     console.error('Failed to load letters:', e);
+    setStatus('Could not load saved letters: ' + e.message, 'err');
   }
 }
 
@@ -3195,8 +3124,10 @@ async function saveLetterToStorage(payload, gen, existingId = null) {
       body: JSON.stringify(entry),
     });
     if (!r.ok) throw new Error(await r.text());
+    setStatus('Letter generated and saved under ' + (entry.caseManager || 'no case manager') + '.', 'ok');
   } catch (e) {
     console.error('Failed to save letter:', e);
+    setStatus('Save failed: ' + e.message, 'err');
   }
   // update cache locally so the UI reflects the change without another round-trip
   const idx = _cachedLetters.findIndex(l => l.id === id);
