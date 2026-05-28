@@ -3045,9 +3045,10 @@ async function _refreshLetters() {
     const r = await fetch('/api/letters');
     if (!r.ok) throw new Error(await r.text());
     _cachedLetters = (await r.json()).map(_dbRowToEntry);
+    return true;
   } catch (e) {
     console.error('Failed to load letters:', e);
-    setStatus('Could not load saved letters: ' + e.message, 'err');
+    return false;
   }
 }
 
@@ -3139,7 +3140,20 @@ function selectCMFolder(cm) {
 }
 
 async function renderSavedLetters(textFilter = '') {
-  await _refreshLetters();
+  const list = document.getElementById('savedLettersList');
+  if (list) list.innerHTML = '<div style="padding:32px;text-align:center;color:var(--muted)">Loading…</div>';
+
+  const ok = await _refreshLetters();
+  if (!ok) {
+    if (list) list.innerHTML = `
+      <div style="padding:24px;text-align:center">
+        <div style="font-size:28px;margin-bottom:8px">⚠️</div>
+        <div style="font-weight:600;color:var(--red);margin-bottom:6px">Could not connect to the database</div>
+        <div style="font-size:12px;color:var(--muted)">Check that your Supabase table exists and Row Level Security is disabled. See console for details.</div>
+      </div>`;
+    return;
+  }
+
   renderCMFolderTabs();
   const all      = _cachedLetters;
 
